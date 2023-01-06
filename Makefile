@@ -26,20 +26,20 @@ $(MLX):
 
 $(NAME): 	$(OBJS) $(LIBFT) $(MLX)
 			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-			echo "\033[1;92m\nmake completed\033[0m"
+			@echo "\033[1;92m\nmake completed\n\033[0m"
 
 clean:
 			@$(RM_OBJ) $(OBJ_DIR)
 			@make -s fclean -C libft/
 			@make -s clean -C mlx_linux/
-			echo "\033[1;93m\nmake clean completed\033[0m"
+			@echo "\033[1;93m\nmake clean completed\n\033[0m"
 
 fclean:	
 			@$(RM_OBJ) $(OBJ_DIR)
 			@$(RM) $(NAME)
 			@make -s fclean -C libft/
 			@make -s clean -C mlx_linux/
-			echo "\033[1;91m\nmake fclean completed\033[0m"
+			@echo "\033[1;91m\nmake fclean completed\n\033[0m"
 
 re:			fclean all
 
