@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/06 16:04:08 by retcheba         ###   ########.fr       */
+/*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
+/*   Updated: 2023/01/06 17:35:22 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#ifndef CUB3D_H
+# define CUB3D_H
 
-int	main(void)
-{
-	ft_printf("Hello World!\n");
-	return (0);
-}
+# include "../libft/inc/libft.h"
+
+#endif
