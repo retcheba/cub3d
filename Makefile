@@ -7,32 +7,39 @@ D_OBJS		= mkdir -p $(@D)
 CC			= clang
 CFLAGS		= -g -Wall -Wextra -Werror
 NAME		= cub3D
-RM			= rm -rf
+RM			= rm -f
+RM_OBJ		= rm -rf
 LIBFT		= libft/libft.a
+MLX			= mlx_linux/libmlx.a
 
 all:		$(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c	
 			@$(D_OBJS)
-			@$(CC) $(CFLAGS) -c -o $@ $<
+			@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c -o $@ $<
 
 $(LIBFT):
 			@make -s -C libft/
 
-$(NAME): 	$(OBJS) $(LIBFT)
-			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-			@echo "\033[1;92mmake completed\033[0m"
+$(MLX):	
+			@make -s -C mlx_linux/
+
+$(NAME): 	$(OBJS) $(LIBFT) $(MLX)
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			echo "\033[1;92m\nmake completed\033[0m"
 
 clean:
-			@$(RM) $(OBJ_DIR)
+			@$(RM_OBJ) $(OBJ_DIR)
 			@make -s fclean -C libft/
-			@echo "\033[1;93mmake clean completed\033[0m"
+			@make -s clean -C mlx_linux/
+			echo "\033[1;93m\nmake clean completed\033[0m"
 
 fclean:	
-			@$(RM) $(OBJ_DIR)
+			@$(RM_OBJ) $(OBJ_DIR)
 			@$(RM) $(NAME)
 			@make -s fclean -C libft/
-			@echo "\033[1;91mmake fclean completed\033[0m"
+			@make -s clean -C mlx_linux/
+			echo "\033[1;91m\nmake fclean completed\033[0m"
 
 re:			fclean all
 

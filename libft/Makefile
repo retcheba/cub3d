@@ -1,3 +1,5 @@
+SRC_DIR		= src
+OBJ_DIR		= obj
 SRCS		= ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -51,22 +53,26 @@ SRCS		= ft_isalpha.c \
 	ft_printf/ft_puthexa_maj.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c
-OBJS		= ${SRCS:.c=.o}
+SRC			= $(addprefix src/, $(SRCS))
+OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+D_OBJS		= mkdir -p $(@D)
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror
 NAME		= libft.a
 RM			= rm -f
+RM_OBJ		= rm -rf
 
 all:		${NAME}
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+			@$(D_OBJS)
 			$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME):	${OBJS}
 			ar rcs ${NAME} ${OBJS}
 
 clean:
-			${RM} ${OBJS}
+			${RM_OBJ} $(OBJ_DIR)
 
 fclean:		clean
 			${RM} ${NAME}
