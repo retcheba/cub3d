@@ -22,7 +22,7 @@
 # define A 97
 # define D 100
 
-typedef struct	s_img_data
+typedef struct s_img_data
 {
 	void	*img;
 	char	*addr;
@@ -33,14 +33,14 @@ typedef struct	s_img_data
 
 typedef struct s_game
 {
-	char	*map_name;
-	void	*mlx;
-	void	*win;
-	int		win_width;
-	int		win_height;
-	int		x;
-	int		y;
-	int		grid_size;
+	char		*map_name;
+	void		*mlx;
+	void		*win;
+	int			win_width;
+	int			win_height;
+	int			x;
+	int			y;
+	int			grid_size;
 	t_img_data	*mini_map;
 }	t_game;
 
