@@ -1,6 +1,6 @@
 SRC_DIR		= src
 OBJ_DIR		= obj
-SRCS		= main.c
+SRCS		= main.c keypress.c
 SRC			= $(addprefix src/, $(SRCS))
 OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS		= mkdir -p $(@D)
