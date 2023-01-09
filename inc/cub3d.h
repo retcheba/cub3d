@@ -54,6 +54,7 @@ typedef struct s_game
 }	t_game;
 
 void	ft_parsing(t_game *game);
+int		map_error_part1(int argc, char **argv);
 int		ft_close(t_game *game);
 int		ft_keypress(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);

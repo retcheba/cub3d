@@ -18,11 +18,8 @@ int	main(int argc, char **argv)
 
 	game.win_width = 1400;
 	game.win_height = 865;
-	if (argc != 2)
-	{
-		ft_putstr_fd("Error\n", 2);
+	if (map_error_part1(argc, argv))
 		return (1);
-	}
 	game.map_name = argv[1];
 	ft_parsing(&game);
 	game.x = 75;
