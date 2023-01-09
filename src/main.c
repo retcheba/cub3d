@@ -12,34 +12,46 @@
 
 #include "../inc/cub3d.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_game		game;
-	t_img_data	mini_map;
 
 	game.win_width = 1400;
 	game.win_height = 865;
-	game.mini_map = &mini_map;
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	game.map_name = argv[1];
+	ft_parsing(&game);
 	game.x = 75;
 	game.y = 75;
-	game.grid_size = 5;
+	game.grid_size = 10;
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \
 		"cub3d");
-	ft_init_mini_map(&game, game.mini_map);
+	ft_init_mini_map(&game, &game.mini_map);
 	mlx_key_hook(game.win, ft_keypress, &game);
 	mlx_hook(game.win, 17, 1, ft_close, &game);
-	mlx_put_image_to_window(game.mlx, game.win, game.mini_map->img, 10, 10);
+	mlx_put_image_to_window(game.mlx, game.win, game.mini_map.img, 10, 10);
 	mlx_loop(game.mlx);
 	return (0);
 }
 
 int	ft_close(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->mini_map->img);
+	mlx_destroy_image(game->mlx, game->mini_map.img);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	free(game->path_to_the_north_texture);
+	free(game->path_to_the_south_texture);
+	free(game->path_to_the_west_texture);
+	free(game->path_to_the_east_texture);
+	free(game->floor_color);
+	free(game->ceiling_color);
+	free_tab(game->map);
 	exit(0);
 	return (0);
 }
