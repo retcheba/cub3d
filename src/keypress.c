@@ -24,7 +24,7 @@ void	ft_up(t_game *game)
 
 void	ft_down(t_game *game)
 {
-	if (!(game->y + 2 < 150))
+	if (!(game->y + 2 < (game->len_y * game->cell_size)))
 		return ;
 	game->y += 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -44,7 +44,7 @@ void	ft_left(t_game *game)
 
 void	ft_right(t_game *game)
 {
-	if (!(game->x + 2 < 150))
+	if (!(game->x + 2 < (game->len_x * game->cell_size)))
 		return ;
 	game->x += 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);

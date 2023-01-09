@@ -12,7 +12,7 @@
 
 #include "../inc/cub3d.h"
 
-static void	ft_init(t_game *game)
+static void	ft_init_game(t_game *game)
 {
 	game->win_width = 1400;
 	game->win_height = 865;
@@ -28,15 +28,19 @@ int	main(int argc, char **argv)
 {
 	t_game		game;
 
-	ft_init(&game);
+	ft_init_game(&game);
 	if (map_error_part1(argc, argv, &game))
 		return (1);
 	ft_parsing(&game);
 	if (map_error_part2(&game))
 		return (1);
-	game.x = 75;
-	game.y = 75;
-	game.grid_size = 10;
+
+	//A RECUP DANS MAP_ERROR_PART2
+	game.x = 10;
+	game.y = 10;
+	game.len_x = 33;
+	game.len_y = 14;
+
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \
 		"cub3d");
