@@ -120,12 +120,13 @@ void	ft_parsing(t_game *game)
 		if (!(ft_strstr(tmp, "\n")))
 		{
 			tab = ft_split(tmp, ' ');
+			if (tab[2] != NULL)
+				ft_free_var_and_exit(game, tab, tmp);
 			if (get_path_and_color_name(game, tab))
 				index++;
 			free_tab(tab);
 		}
 		free(tmp);
-		tmp = NULL;
 		count++;
 	}
 	get_map(game, count, fd);

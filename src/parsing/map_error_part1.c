@@ -12,13 +12,14 @@
 
 #include "../../inc/cub3d.h"
 
-int	map_error_part1(int argc, char **argv)
+int	map_error_part1(int argc, char **argv, t_game *game)
 {
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error: wrong number of arguments\n", 2);
+		ft_putstr_fd("Error\nWrong number of arguments\n", 2);
 		return (1);
 	}
 	//check .cub (si pas bon return 1)
+	game->map_name = argv[1];
 	return (0);
 }

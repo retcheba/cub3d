@@ -46,3 +46,23 @@ void	free_tab(char **tab)
 	}
 	free(tab);
 }
+
+void	ft_free_var_and_exit(t_game *game, char **tab, char *tmp)
+{
+	free_tab(tab);
+	free(tmp);
+	if (game->path_to_the_north_texture)
+		free (game->path_to_the_north_texture);
+	if (game->path_to_the_south_texture)
+		free (game->path_to_the_south_texture);
+	if (game->path_to_the_west_texture)
+		free (game->path_to_the_west_texture);
+	if (game->path_to_the_east_texture)
+		free (game->path_to_the_east_texture);
+	if (game->floor_color)
+		free (game->floor_color);
+	if (game->ceiling_color)
+		free (game->ceiling_color);
+	ft_putstr_fd("Error\nWrong map\n", 2);
+	exit(1);
+}

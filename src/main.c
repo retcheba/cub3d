@@ -12,16 +12,28 @@
 
 #include "../inc/cub3d.h"
 
+static void	ft_init(t_game *game)
+{
+	game->win_width = 1400;
+	game->win_height = 865;
+	game->path_to_the_north_texture = NULL;
+	game->path_to_the_south_texture = NULL;
+	game->path_to_the_west_texture = NULL;
+	game->path_to_the_east_texture = NULL;
+	game->floor_color = NULL;
+	game->ceiling_color = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_game		game;
 
-	game.win_width = 1400;
-	game.win_height = 865;
-	if (map_error_part1(argc, argv))
+	ft_init(&game);
+	if (map_error_part1(argc, argv, &game))
 		return (1);
-	game.map_name = argv[1];
 	ft_parsing(&game);
+	if (map_error_part2(&game))
+		return (1);
 	game.x = 75;
 	game.y = 75;
 	game.grid_size = 10;

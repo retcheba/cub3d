@@ -47,21 +47,27 @@ typedef struct s_game
 	char		*path_to_the_east_texture;
 	char		*floor_color;
 	char		*ceiling_color;
+	int			f_color;
+	int			c_color;
 	int			x;
 	int			y;
 	int			grid_size;
 	t_img_data	mini_map;
 }	t_game;
 
-void	ft_parsing(t_game *game);
-int		map_error_part1(int argc, char **argv);
+//	MAIN FUNCTIONS
 int		ft_close(t_game *game);
 int		ft_keypress(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_draw_grid(t_img_data *mini_map, int grid_size, int cell_size);
+//	PARSING
+void	ft_parsing(t_game *game);
+int		map_error_part1(int argc, char **argv, t_game *game);
+int		map_error_part2(t_game *game);
 //	TOOLS
 void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);
 int		ft_strstr(char *str, char *to_find);
 void	free_tab(char **tab);
+void	ft_free_var_and_exit(t_game *game, char **tab, char *tmp);
 
 #endif
