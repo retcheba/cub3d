@@ -12,18 +12,8 @@
 
 #include "../inc/cub3d.h"
 
-void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
+static void	ft_draw_player(t_game *game, t_img_data *mini_map)
 {
-	if (game->len_x >= game->len_y)
-		game->cell_size = 150 / game->len_x;
-	else
-		game->cell_size = 150 / game->len_y;
-	mini_map->img = mlx_new_image(game->mlx, (game->len_x * game->cell_size), \
-		(game->len_y * game->cell_size));
-	mini_map->addr = mlx_get_data_addr(mini_map->img, &mini_map->bpp, \
-		&mini_map->line_length, &mini_map->endian);
-	ft_draw_squares(game, &game->mini_map, game->cell_size);
-	ft_draw_grid(mini_map, game->len_y, game->len_x, game->cell_size);
 	my_mlx_pixel_put(mini_map, game->x, game->y, 0x00FFFF);
 	my_mlx_pixel_put(mini_map, game->x + 1, game->y + 1, 0x00FFFF);
 	my_mlx_pixel_put(mini_map, game->x, game->y + 1, 0x00FFFF);
@@ -49,7 +39,7 @@ static void	ft_draw_one_square(t_img_data *mini_map, int start_x, int start_y, \
 	}
 }
 
-void	ft_draw_squares(t_game *game, t_img_data *mini_map, int cell_size)
+static void	ft_draw_squares(t_game *game, t_img_data *mini_map, int cell_size)
 {
 	int	x;
 	int	y;
@@ -72,7 +62,8 @@ void	ft_draw_squares(t_game *game, t_img_data *mini_map, int cell_size)
 	}
 }
 
-void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, int cell_size)
+static void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, \
+	int cell_size)
 {
 	int	i;
 	int	x;
@@ -98,4 +89,19 @@ void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, int cell_size)
 		}
 		y++;
 	}
+}
+
+void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
+{
+	if (game->len_x >= game->len_y)
+		game->cell_size = 150 / game->len_x;
+	else
+		game->cell_size = 150 / game->len_y;
+	mini_map->img = mlx_new_image(game->mlx, (game->len_x * game->cell_size), \
+		(game->len_y * game->cell_size));
+	mini_map->addr = mlx_get_data_addr(mini_map->img, &mini_map->bpp, \
+		&mini_map->line_length, &mini_map->endian);
+	ft_draw_squares(game, &game->mini_map, game->cell_size);
+	ft_draw_grid(mini_map, game->len_y, game->len_x, game->cell_size);
+	ft_draw_player(game, mini_map);
 }

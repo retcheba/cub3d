@@ -61,8 +61,6 @@ typedef struct s_game
 int		ft_close(t_game *game);
 int		ft_keypress(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
-void	ft_draw_squares(t_game *game, t_img_data *mini_map, int cell_size);
-void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, int cell_size);
 //	PARSING
 void	ft_parsing(t_game *game);
 int		map_error_part1(int argc, char **argv, t_game *game);
