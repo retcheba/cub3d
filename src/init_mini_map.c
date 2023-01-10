@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_img.c                                         :+:      :+:    :+:   */
+/*   init_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:46:49 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/08 22:46:55 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:35:34 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,6 @@ static void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, \
 
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
 {
-	if (game->len_x >= game->len_y)
-		game->cell_size = 300 / game->len_x;
-	else
-		game->cell_size = 300 / game->len_y;
 	mini_map->img = mlx_new_image(game->mlx, (game->len_x * game->cell_size), \
 		(game->len_y * game->cell_size));
 	mini_map->addr = mlx_get_data_addr(mini_map->img, &mini_map->bpp, \

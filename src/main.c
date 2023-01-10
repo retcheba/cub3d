@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/06 16:04:08 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:59:42 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,19 @@ int	main(int argc, char **argv)
 	ft_parsing(&game);
 	if (map_error_part2(&game))
 		return (1);
-
+	
 	//A RECUP DANS MAP_ERROR_PART2
-	game.px = 10;
-	game.py = 10;
 	game.len_x = 33;
 	game.len_y = 14;
+	game.x = 27;
+	game.y = 12;
+	
+	if (game.len_x >= game.len_y)
+		game.cell_size = 300 / game.len_x;
+	else
+		game.cell_size = 300 / game.len_y;
+	game.px = (game.x * game.cell_size) - (game.cell_size / 2);
+	game.py = (game.y * game.cell_size) - (game.cell_size / 2);
 
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \

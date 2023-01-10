@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/08 17:47:45 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:22:33 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_up(t_game *game)
 {
-	if (!(game->py - 2 >= 0))
+	if (game->map[(game->py - 2) / game->cell_size][game->px / game->cell_size] == '1'
+		|| (game->py - 2 < 0))
 		return ;
 	game->py -= 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -24,7 +25,8 @@ void	ft_up(t_game *game)
 
 void	ft_down(t_game *game)
 {
-	if (!(game->py + 2 < (game->len_y * game->cell_size)))
+	if (game->map[(game->py + 2) / game->cell_size][game->px / game->cell_size] == '1'
+		|| (game->py + 2 >= (game->len_y * game->cell_size)))
 		return ;
 	game->py += 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -34,7 +36,8 @@ void	ft_down(t_game *game)
 
 void	ft_left(t_game *game)
 {
-	if (!(game->px - 2 >= 0))
+	if (game->map[game->py / game->cell_size][(game->px - 2) / game->cell_size] == '1'
+		|| (game->px - 2 < 0))
 		return ;
 	game->px -= 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -44,7 +47,8 @@ void	ft_left(t_game *game)
 
 void	ft_right(t_game *game)
 {
-	if (!(game->px + 2 < (game->len_x * game->cell_size)))
+	if (game->map[game->py / game->cell_size][(game->px + 2) / game->cell_size] == '1'
+		|| (game->px + 2 >= (game->len_x * game->cell_size)))
 		return ;
 	game->px += 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
