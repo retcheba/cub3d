@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 14:38:39 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:28:57 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_game
 	int			len_x;
 	int			len_y;
 	int			cell_size;
+	int			p_orientation;
 	t_img_data	mini_map;
 }	t_game;
 

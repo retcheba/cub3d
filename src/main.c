@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 17:59:42 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:29:08 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ int	main(int argc, char **argv)
 		return (1);
 	
 	//A RECUP DANS MAP_ERROR_PART2
-	game.len_x = 33;
-	game.len_y = 14;
-	game.x = 27;
-	game.y = 12;
+	game.len_x = 6;
+	game.len_y = 6;
+	game.x = 5;
+	game.y = 5;
+	game.p_orientation = 0;
 	
 	if (game.len_x >= game.len_y)
-		game.cell_size = 300 / game.len_x;
+		game.cell_size = 200 / game.len_x;
 	else
-		game.cell_size = 300 / game.len_y;
+		game.cell_size = 200 / game.len_y;
 	game.px = (game.x * game.cell_size) - (game.cell_size / 2);
 	game.py = (game.y * game.cell_size) - (game.cell_size / 2);
 

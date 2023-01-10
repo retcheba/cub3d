@@ -6,18 +6,46 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:46:49 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 14:35:34 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:45:38 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+static void	ft_draw_lines(t_game *game, t_img_data *mini_map)
+{
+	int	i;
+
+	i = 2;
+	while (game->map[(game->py - i) / game->cell_size][(game->px - i) / game->cell_size] != '1')
+	{
+		my_mlx_pixel_put(mini_map, game->px - i, game->py - i, 0x00FF00);
+		i++;
+	}
+	i = 2;
+	while (game->map[(game->py - i) / game->cell_size][(game->px + i) / game->cell_size] != '1')
+	{
+		my_mlx_pixel_put(mini_map, game->px + i, game->py - i, 0x00FF00);
+		i++;
+	}
+}
+
 static void	ft_draw_player(t_game *game, t_img_data *mini_map)
 {
-	my_mlx_pixel_put(mini_map, game->px, game->py, 0xFF0000);
-	my_mlx_pixel_put(mini_map, game->px + 1, game->py + 1, 0xFF0000);
-	my_mlx_pixel_put(mini_map, game->px, game->py + 1, 0xFF0000);
-	my_mlx_pixel_put(mini_map, game->px + 1, game->py, 0xFF0000);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 3)
+	{
+		j = 0;
+		while (j < 3)
+		{
+			my_mlx_pixel_put(mini_map, game->px + (i - 1), game->py + (j - 1), 0xFF0000);
+			j++;
+		}
+		i++;
+	}
 }
 
 static void	ft_draw_one_square(t_game *game, int start_x, int start_y, \
@@ -104,4 +132,5 @@ void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
 	ft_draw_squares(game, game->cell_size);
 	ft_draw_grid(mini_map, game->len_y, game->len_x, game->cell_size);
 	ft_draw_player(game, mini_map);
+	ft_draw_lines(game, mini_map);
 }
