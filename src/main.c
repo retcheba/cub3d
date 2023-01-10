@@ -36,8 +36,8 @@ int	main(int argc, char **argv)
 		return (1);
 
 	//A RECUP DANS MAP_ERROR_PART2
-	game.x = 10;
-	game.y = 10;
+	game.px = 10;
+	game.py = 10;
 	game.len_x = 33;
 	game.len_y = 14;
 

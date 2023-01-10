@@ -14,9 +14,9 @@
 
 void	ft_up(t_game *game)
 {
-	if (!(game->y - 2 > 0))
+	if (!(game->py - 2 >= 0))
 		return ;
-	game->y -= 2;
+	game->py -= 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
 	ft_init_mini_map(game, &game->mini_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
@@ -24,9 +24,9 @@ void	ft_up(t_game *game)
 
 void	ft_down(t_game *game)
 {
-	if (!(game->y + 2 < (game->len_y * game->cell_size)))
+	if (!(game->py + 2 < (game->len_y * game->cell_size)))
 		return ;
-	game->y += 2;
+	game->py += 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
 	ft_init_mini_map(game, &game->mini_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
@@ -34,9 +34,9 @@ void	ft_down(t_game *game)
 
 void	ft_left(t_game *game)
 {
-	if (!(game->x - 2 > 0))
+	if (!(game->px - 2 >= 0))
 		return ;
-	game->x -= 2;
+	game->px -= 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
 	ft_init_mini_map(game, &game->mini_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
@@ -44,9 +44,9 @@ void	ft_left(t_game *game)
 
 void	ft_right(t_game *game)
 {
-	if (!(game->x + 2 < (game->len_x * game->cell_size)))
+	if (!(game->px + 2 < (game->len_x * game->cell_size)))
 		return ;
-	game->x += 2;
+	game->px += 2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
 	ft_init_mini_map(game, &game->mini_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
