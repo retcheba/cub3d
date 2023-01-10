@@ -14,10 +14,10 @@
 
 static void	ft_draw_player(t_game *game, t_img_data *mini_map)
 {
-	my_mlx_pixel_put(mini_map, game->x, game->y, 0x00FFFF);
-	my_mlx_pixel_put(mini_map, game->x + 1, game->y + 1, 0x00FFFF);
-	my_mlx_pixel_put(mini_map, game->x, game->y + 1, 0x00FFFF);
-	my_mlx_pixel_put(mini_map, game->x + 1, game->y, 0x00FFFF);
+	my_mlx_pixel_put(mini_map, game->x, game->y, 0xFF0000);
+	my_mlx_pixel_put(mini_map, game->x + 1, game->y + 1, 0xFF0000);
+	my_mlx_pixel_put(mini_map, game->x, game->y + 1, 0xFF0000);
+	my_mlx_pixel_put(mini_map, game->x + 1, game->y, 0xFF0000);
 }
 
 static void	ft_draw_one_square(t_img_data *mini_map, int start_x, int start_y, \
@@ -94,9 +94,9 @@ static void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, \
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
 {
 	if (game->len_x >= game->len_y)
-		game->cell_size = 150 / game->len_x;
+		game->cell_size = 300 / game->len_x;
 	else
-		game->cell_size = 150 / game->len_y;
+		game->cell_size = 300 / game->len_y;
 	mini_map->img = mlx_new_image(game->mlx, (game->len_x * game->cell_size), \
 		(game->len_y * game->cell_size));
 	mini_map->addr = mlx_get_data_addr(mini_map->img, &mini_map->bpp, \
