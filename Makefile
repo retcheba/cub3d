@@ -1,6 +1,7 @@
 SRC_DIR		= src
 OBJ_DIR		= obj
-SRCS		= main.c parsing/parsing.c parsing/map_error_part1.c parsing/map_error_part2.c init_img.c keypress.c tools.c
+SRCS		= main.c parsing/parsing.c parsing/map_error_part1.c parsing/map_error_part2.c  \
+				init_img.c keypress.c tools.c parsing/error_message_handling.c
 SRC			= $(addprefix src/, $(SRCS))
 OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS		= mkdir -p $(@D)

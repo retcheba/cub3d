@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/06 17:35:22 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:54:54 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define ESC 65307
-# define W 119
-# define S 115
-# define A 97
-# define D 100
+# define ARG_ERROR			1
+# define FILE_NAME_ERROR	2
+# define FD_ERROR			3
+# define CL_ERROR			4
+# define MAP_RECT_ERROR		5
+# define MAP_ELEM_ERROR		6
+# define ESC 				65307
+# define W 					119
+# define S 					115
+# define A 					97
+# define D 					100
 
 typedef struct s_img_data
 {
@@ -35,7 +41,7 @@ typedef struct s_img_data
 
 typedef struct s_game
 {
-	char		*map_name;
+	char		*scene_name;
 	void		*mlx;
 	void		*win;
 	int			win_width;
@@ -65,6 +71,8 @@ void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_parsing(t_game *game);
 int		map_error_part1(int argc, char **argv, t_game *game);
 int		map_error_part2(t_game *game);
+void	ft_scene_file_error(int nb_error);
+void	ft_map_error(int nb_error, t_game *game);
 //	TOOLS
 void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);
 int		ft_strstr(char *str, char *to_find);

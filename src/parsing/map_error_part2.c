@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_error_part2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/09 16:39:53 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:25:16 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	map_error_part2(t_game *game)
 	Vérifier:
 	-	les paths pour les textures
 	-	les couleurs
-	-	la map (si y a que des caractères valides, bien fermé par des 1,
+	-	la map (format fichier + extension, si y a que des caractères valides, 
+		bien fermé par des 1,
 		1 seule position de départs) -> recupérer len_x et len_y (de la map) 
 		et récupérer aussi x et y (du player)
 	

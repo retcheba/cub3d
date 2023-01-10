@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:38 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/09 13:58:40 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:57:56 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	fill_map(t_game *game, int count, int fd)
 	int		i;
 	char	*tmp;
 
-	fd = open(game->map_name, O_RDONLY);
+	fd = open(game->scene_name, O_RDONLY);
 	while (count > 0)
 	{
 		tmp = get_next_line(fd);
@@ -113,7 +113,7 @@ void	ft_parsing(t_game *game)
 
 	index = 0;
 	count = 0;
-	fd = open(game->map_name, O_RDONLY);
+	fd = open(game->scene_name, O_RDONLY);
 	while (index < 6)
 	{
 		tmp = get_next_line(fd);
