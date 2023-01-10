@@ -20,8 +20,8 @@ int	map_error_part2(t_game *game)
 	-	les paths pour les textures
 	-	les couleurs
 	-	la map (si y a que des caractères valides, bien fermé par des 1,
-		1 seule position de départs) -> recupérer len_x et len_y (de la map) 
-		et récupérer aussi x et y (du player)
+		1 seule position de départs) -> recupérer len_x et len_y (len de la map) 
+		et récupérer aussi px et py (coordonnées du player)
 	
 	if (pas bon)
 	{

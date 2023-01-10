@@ -49,8 +49,8 @@ typedef struct s_game
 	char		*ceiling_color;
 	int			f_color;
 	int			c_color;
-	int			x;
-	int			y;
+	int			px;
+	int			py;
 	int			len_x;
 	int			len_y;
 	int			cell_size;
