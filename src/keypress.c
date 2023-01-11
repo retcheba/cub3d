@@ -56,6 +56,26 @@ void	ft_right(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
 }
 
+void	ft_rotate_left(t_game *game)
+{
+	game->pa += 0.1;
+	if (game->pa > (2 * PI))
+		game->pa -= (2 * PI);
+	mlx_destroy_image(game->mlx, game->mini_map.img);
+	ft_init_mini_map(game, &game->mini_map);
+	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+}
+
+void	ft_rotate_right(t_game *game)
+{
+	game->pa -= 0.1;
+	if (game->pa < 0)
+		game->pa += (2 * PI);
+	mlx_destroy_image(game->mlx, game->mini_map.img);
+	ft_init_mini_map(game, &game->mini_map);
+	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+}
+
 int	ft_keypress(int keycode, t_game *game)
 {
 	if (keycode == ESC)
@@ -68,5 +88,9 @@ int	ft_keypress(int keycode, t_game *game)
 		ft_left(game);
 	if (keycode == D)
 		ft_right(game);
+	if (keycode == LEFT)
+		ft_rotate_left(game);
+	if (keycode == RIGHT)
+		ft_rotate_right(game);
 	return (0);
 }

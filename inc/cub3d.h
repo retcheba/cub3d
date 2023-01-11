@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 22:28:57 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 04:57:35 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "mlx.h"
 # include "../libft/inc/libft.h"
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 
 # define ARG_ERROR			1
@@ -29,6 +30,9 @@
 # define S 					115
 # define A 					97
 # define D 					100
+# define LEFT				65361
+# define RIGHT				65363
+# define PI					3.14
 
 typedef struct s_img_data
 {
@@ -59,10 +63,10 @@ typedef struct s_game
 	int			y;
 	int			px;
 	int			py;
+	float		pa;
 	int			len_x;
 	int			len_y;
 	int			cell_size;
-	int			p_orientation;
 	t_img_data	mini_map;
 }	t_game;
 
@@ -70,6 +74,7 @@ typedef struct s_game
 int		ft_close(t_game *game);
 int		ft_keypress(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
+void	ft_draw_lines(t_game *game, t_img_data *mini_map);
 //	PARSING
 void	ft_parsing(t_game *game);
 int		map_error_part1(int argc, char **argv, t_game *game);

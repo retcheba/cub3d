@@ -6,29 +6,11 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:46:49 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 22:45:38 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 04:56:46 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-static void	ft_draw_lines(t_game *game, t_img_data *mini_map)
-{
-	int	i;
-
-	i = 2;
-	while (game->map[(game->py - i) / game->cell_size][(game->px - i) / game->cell_size] != '1')
-	{
-		my_mlx_pixel_put(mini_map, game->px - i, game->py - i, 0x00FF00);
-		i++;
-	}
-	i = 2;
-	while (game->map[(game->py - i) / game->cell_size][(game->px + i) / game->cell_size] != '1')
-	{
-		my_mlx_pixel_put(mini_map, game->px + i, game->py - i, 0x00FF00);
-		i++;
-	}
-}
 
 static void	ft_draw_player(t_game *game, t_img_data *mini_map)
 {

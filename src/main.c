@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 22:29:08 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 04:59:57 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	main(int argc, char **argv)
 	ft_parsing(&game);
 	if (map_error_part2(&game))
 		return (1);
-	
+
 	//A RECUP DANS MAP_ERROR_PART2
-	game.len_x = 6;
-	game.len_y = 6;
-	game.x = 5;
-	game.y = 5;
-	game.p_orientation = 0;
-	
+	game.len_x = 6;		//len x map
+	game.len_y = 6;		//len y map
+	game.x = 5;			//x du player
+	game.y = 5;			//y du player
+	game.pa = PI / 2;	//orientation (en Radian)
+
 	if (game.len_x >= game.len_y)
 		game.cell_size = 200 / game.len_x;
 	else

@@ -1,7 +1,7 @@
 SRC_DIR		= src
 OBJ_DIR		= obj
 SRCS		= main.c parsing/parsing.c parsing/map_error_part1.c parsing/map_error_part2.c  \
-				init_mini_map.c keypress.c tools.c parsing/error_message_handling.c
+				init_mini_map.c draw_lines.c keypress.c tools.c parsing/error_message_handling.c
 
 
 SRC			= $(addprefix src/, $(SRCS))
