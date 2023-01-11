@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 15:37:32 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:15:14 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define D 					100
 # define LEFT				65361
 # define RIGHT				65363
-# define PI					3.14
+# define PI					3.14159265359
 
 typedef struct s_img_data
 {
@@ -64,6 +64,10 @@ typedef struct s_game
 	int			y;
 	int			px;
 	int			py;
+	int			pdx;
+	int			pdy;
+	int			pdx2;
+	int			pdy2;
 	float		pa;
 	int			len_x;
 	int			len_y;

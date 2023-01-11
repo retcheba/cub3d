@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 04:59:57 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:18:57 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ int	main(int argc, char **argv)
 	game.x = 5;			//x du player
 	game.y = 5;			//y du player
 	game.pa = PI / 2;	//orientation (en Radian)
-
+	
+	game.pdx = cos(game.pa) * 3;
+	game.pdy = sin(game.pa) * 3;
+	game.pdx2 = cos(game.pa + (PI / 2)) * 3;
+	game.pdy2 = sin(game.pa + (PI / 2)) * 3;
 	if (game.len_x >= game.len_y)
 		game.cell_size = 200 / game.len_x;
 	else

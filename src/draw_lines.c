@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 04:56:57 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:21:55 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ static void	ft_draw_one_line(t_game *game, t_img_data *mini_map, int x2, int y2)
 	dx = abs(x2 - game->px);
 	dy = abs(y2 - game->py);
 	err = dx - dy;
-	while (game->map[y / game->cell_size][x / game->cell_size] != '1')
+	while (game->map[y / game->cell_size][x / game->cell_size] != '1'
+		&& x != x2 && y != y2)
 	{
-		if (x == x2 && y == y2)
-			break;
 		if (2 * err > -dy)
 		{
 			err -= dy;
