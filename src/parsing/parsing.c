@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:38 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 11:57:56 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:34:47 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,9 @@ void	ft_parsing(t_game *game)
 		if (!(ft_strstr(tmp, "\n")))
 		{
 			tab = ft_split(tmp, ' ');
-			if (tab[2] != NULL)
+			if (tab[1] == NULL) // le 2 eme mot == NULL
+				ft_free_var_and_exit(game, tab, tmp);
+			if (tab[2] != NULL)// le 3 eme mots != NULL
 				ft_free_var_and_exit(game, tab, tmp);
 			if (get_path_and_color_name(game, tab))
 				index++;
