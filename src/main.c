@@ -29,8 +29,7 @@ int	main(int argc, char **argv)
 	t_game		game;
 
 	ft_init_game(&game);
-	if (map_error_part1(argc, argv, &game))
-		return (1);
+	check_scene_errors(argc, argv, &game);
 	ft_parsing(&game);
 	if (map_error_part2(&game))
 		return (1);

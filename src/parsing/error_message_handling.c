@@ -26,7 +26,7 @@ void	ft_scene_file_error(int nb_error)
 		ft_putstr_fd("Error\nWhile reading the file (fd = -1).\n", 2);
 	if (nb_error == CL_ERROR)
 		ft_putstr_fd("Error\nWhile closing the file.\n", 2);
-	//exit(0);
+	exit(0);
 }
 
 //MAP ERRORS

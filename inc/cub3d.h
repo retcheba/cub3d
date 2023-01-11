@@ -77,7 +77,7 @@ void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_draw_lines(t_game *game, t_img_data *mini_map);
 //	PARSING
 void	ft_parsing(t_game *game);
-int		map_error_part1(int argc, char **argv, t_game *game);
+void	check_scene_errors(int argc, char **argv, t_game *game);
 int		map_error_part2(t_game *game);
 void	ft_scene_file_error(int nb_error);
 void	ft_map_error(int nb_error, t_game *game);
