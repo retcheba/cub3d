@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 19:15:14 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:32:39 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define LEFT				65361
 # define RIGHT				65363
 # define PI					3.14159265359
+# define SPEED				0.02
+# define ROTATE_SPEED		0.00125
 
 typedef struct s_img_data
 {
@@ -51,6 +53,12 @@ typedef struct s_game
 	void		*win;
 	int			win_width;
 	int			win_height;
+	int			W_DOWN;
+	int			S_DOWN;
+	int			A_DOWN;
+	int			D_DOWN;
+	int			LEFT_DOWN;
+	int			RIGHT_DOWN;
 	char		**map;
 	char		*path_to_the_north_texture;
 	char		*path_to_the_south_texture;
@@ -62,12 +70,12 @@ typedef struct s_game
 	int			c_color;
 	int			x;
 	int			y;
-	int			px;
-	int			py;
-	int			pdx;
-	int			pdy;
-	int			pdx2;
-	int			pdy2;
+	float		px;
+	float		py;
+	float		pdx;
+	float		pdy;
+	float		pdx2;
+	float		pdy2;
 	float		pa;
 	int			len_x;
 	int			len_y;
@@ -77,7 +85,9 @@ typedef struct s_game
 
 //	MAIN FUNCTIONS
 int		ft_close(t_game *game);
+int		ft_moves(t_game *game);
 int		ft_keypress(int keycode, t_game *game);
+int		ft_keyrelease(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_draw_lines(t_game *game, t_img_data *mini_map);
 //	PARSING

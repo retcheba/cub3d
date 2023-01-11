@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 19:18:57 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:21:02 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ static void	ft_init_game(t_game *game)
 	game->path_to_the_east_texture = NULL;
 	game->floor_color = NULL;
 	game->ceiling_color = NULL;
+	game->W_DOWN = 0;
+	game->S_DOWN = 0;
+	game->A_DOWN = 0;
+	game->D_DOWN = 0;
+	game->LEFT_DOWN = 0;
+	game->RIGHT_DOWN = 0;
 }
 
 int	main(int argc, char **argv)
@@ -41,10 +47,10 @@ int	main(int argc, char **argv)
 	game.y = 5;			//y du player
 	game.pa = PI / 2;	//orientation (en Radian)
 	
-	game.pdx = cos(game.pa) * 3;
-	game.pdy = sin(game.pa) * 3;
-	game.pdx2 = cos(game.pa + (PI / 2)) * 3;
-	game.pdy2 = sin(game.pa + (PI / 2)) * 3;
+	game.pdx = cos(game.pa) * SPEED;
+	game.pdy = sin(game.pa) * SPEED;
+	game.pdx2 = cos(game.pa + (PI / 2)) * SPEED;
+	game.pdy2 = sin(game.pa + (PI / 2)) * SPEED;
 	if (game.len_x >= game.len_y)
 		game.cell_size = 200 / game.len_x;
 	else
@@ -56,8 +62,10 @@ int	main(int argc, char **argv)
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \
 		"cub3d");
 	ft_init_mini_map(&game, &game.mini_map);
-	mlx_key_hook(game.win, ft_keypress, &game);
-	mlx_hook(game.win, 17, 1, ft_close, &game);
+	mlx_hook(game.win, 17, (1L<<0), ft_close, &game);
+	mlx_hook(game.win, 2, (1L<<0), ft_keypress, &game);
+	mlx_hook(game.win, 3, (1L<<1), ft_keyrelease, &game);
+	mlx_loop_hook(game.mlx, ft_moves, &game);
 	mlx_put_image_to_window(game.mlx, game.win, game.mini_map.img, 10, 10);
 	mlx_loop(game.mlx);
 	return (0);
