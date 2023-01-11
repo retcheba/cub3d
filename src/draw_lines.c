@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 22:25:44 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:49:05 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_draw_one_line(t_game *game, t_img_data *mini_map, int x2, int y2)
 			else
 				y--;
 		}
-		my_mlx_pixel_put(mini_map, x, y, 0x00FF00);
+		my_mlx_pixel_put(mini_map, x, y, 0x008000);
 	}
 }
 

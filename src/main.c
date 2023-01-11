@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 22:21:02 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:50:55 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ static void	ft_init_game(t_game *game)
 	game->RIGHT_DOWN = 0;
 }
 
+static void ft_init_values(t_game *game)
+{
+	game->pdx = cos(game->pa) * SPEED;
+	game->pdy = sin(game->pa) * SPEED;
+	game->pdx2 = cos(game->pa + (PI / 2)) * SPEED;
+	game->pdy2 = sin(game->pa + (PI / 2)) * SPEED;
+	if (game->len_x >= game->len_y)
+		game->cell_size = 200 / game->len_x;
+	else
+		game->cell_size = 200 / game->len_y;
+	game->px = (game->x * game->cell_size) - (game->cell_size / 2);
+	game->py = (game->y * game->cell_size) - (game->cell_size / 2);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game		game;
@@ -45,19 +59,9 @@ int	main(int argc, char **argv)
 	game.len_y = 6;		//len y map
 	game.x = 5;			//x du player
 	game.y = 5;			//y du player
-	game.pa = PI / 2;	//orientation (en Radian)
-	
-	game.pdx = cos(game.pa) * SPEED;
-	game.pdy = sin(game.pa) * SPEED;
-	game.pdx2 = cos(game.pa + (PI / 2)) * SPEED;
-	game.pdy2 = sin(game.pa + (PI / 2)) * SPEED;
-	if (game.len_x >= game.len_y)
-		game.cell_size = 200 / game.len_x;
-	else
-		game.cell_size = 200 / game.len_y;
-	game.px = (game.x * game.cell_size) - (game.cell_size / 2);
-	game.py = (game.y * game.cell_size) - (game.cell_size / 2);
+	game.pa = PI / 2;	//orientation (en Radian) du player
 
+	ft_init_values(&game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \
 		"cub3d");
