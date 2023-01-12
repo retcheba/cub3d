@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:28:28 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 14:39:13 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:19:31 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static void	check_scene_name(char *scene_file_name)
 
 //check open file
 //check close file
-static void check_open_and_close_file(char *scene_file_name)
+static void	check_open_and_close_file(char *scene_file_name)
 {
 	int	fd;
 	int	cl;
-	
+
 	fd = open(scene_file_name, O_RDONLY);
 	if (fd == -1)
 		ft_scene_file_error(FD_ERROR);

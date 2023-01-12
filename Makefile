@@ -8,7 +8,7 @@ SRC			= $(addprefix src/, $(SRCS))
 OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS		= mkdir -p $(@D)
 CC			= clang
-CFLAGS		= -g -Wall -Wextra -Werror
+CFLAGS		= -g -Wall -Wextra -Werror 
 NAME		= cub3D
 RM			= rm -f
 RM_OBJ		= rm -rf
