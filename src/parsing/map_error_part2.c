@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 18:17:41 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:41:35 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,20 @@ static void	check_all_map_elements(t_game *game)
 	}
 }
 */
-static void	get_player_pos(t_game *game)
+
+static void	get_player_angle(t_game *game, int i, int j)
+{
+	if (game->map[i][j] == 'N')
+		game->pa = PI / 2;
+	if (game->map[i][j] == 'S')
+		game->pa = (3 * PI) / 2;
+	if (game->map[i][j] == 'W')
+		game->pa = PI;
+	if (game->map[i][j] == 'E')
+		game->pa = 0;
+}
+
+static void	get_player_pos_and_angle(t_game *game)
 {
 	int	i;
 	int	j;
@@ -115,6 +128,7 @@ static void	get_player_pos(t_game *game)
 			{
 				game->x = j + 1;
 				game->y = i + 1;
+				get_player_angle(game, i, j);
 				return ;
 			}
 			else
@@ -135,7 +149,7 @@ int	map_error_part2(t_game *game)//renommer
 	//print_map(game); //fonction à supprimer
 	check_all_map_elements(game); // check caracteres " ", 1, 0, N, W, S, E
 	get_map_size(game); //recuperer len_x et len_y
-	get_player_pos(game);
+	get_player_pos_and_angle(game);
 	/*
 	-	la map (si y a que des caractères valides, bien fermé par des 1,
 		1 seule position de départs) -> recupérer len_x et len_y (len de la map) 
