@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:54 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:33:00 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static void ft_init_values(t_game *game)
 	game->pdy = sin(game->pa) * SPEED;
 	game->pdx2 = cos(game->pa + (PI / 2)) * SPEED;
 	game->pdy2 = sin(game->pa + (PI / 2)) * SPEED;
-	if (game->len_x >= game->len_y)
-		game->cell_size = 200 / game->len_x;
-	else
-		game->cell_size = 200 / game->len_y;
+	game->cell_size = 12;
 	game->px = (game->x * game->cell_size) - (game->cell_size / 2);
 	game->py = (game->y * game->cell_size) - (game->cell_size / 2);
 }
@@ -60,12 +57,6 @@ int	main(int argc, char **argv)
 	//game.y = 5;			//y du player OK
 	game.pa = PI / 2;//orientation (en Radian)
 
-	if (game.len_x >= game.len_y)
-		game.cell_size = 200 / game.len_x;
-	else
-		game.cell_size = 200 / game.len_y;
-	game.px = (game.x * game.cell_size) - (game.cell_size / 2);
-	game.py = (game.y * game.cell_size) - (game.cell_size / 2);
 	ft_init_values(&game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \

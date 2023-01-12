@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 16:30:27 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:33:28 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define LEFT				65361
 # define RIGHT				65363
 # define PI					3.14159265359
-# define SPEED				0.02
-# define ROTATE_SPEED		0.00125
+# define SPEED				0.01
+# define ROTATE_SPEED		0.0005
 
 typedef struct s_img_data
 {

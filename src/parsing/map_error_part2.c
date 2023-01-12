@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_error_part2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 16:24:05 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:17:41 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ static void	get_player_pos(t_game *game)
 			if (game->map[i][j] == 'N' || game->map[i][j] == 'W'
 				|| game->map[i][j] == 'E' || game->map[i][j] == 'S')
 			{
-				game->x = j;
-				game->y = i;
+				game->x = j + 1;
+				game->y = i + 1;
 				return ;
 			}
 			else
