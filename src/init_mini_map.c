@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:46:49 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 04:56:46 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:42:10 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,6 @@ void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
 		&mini_map->line_length, &mini_map->endian);
 	ft_draw_squares(game, game->cell_size);
 	ft_draw_grid(mini_map, game->len_y, game->len_x, game->cell_size);
-	ft_draw_player(game, mini_map);
 	ft_draw_lines(game, mini_map);
+	ft_draw_player(game, mini_map);
 }
