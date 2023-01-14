@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/14 02:19:50 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:09:12 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define CL_ERROR			4
 # define MAP_ELEM_ERROR		5
 # define TX_FILE_ERROR		6
+# define PLAYER_ERROR		7
 // KEYS
 # define ESC 				65307
 # define W 					119
@@ -101,6 +102,8 @@ int		map_error_part2(t_game *game);
 void	ft_scene_file_error(int nb_error);
 void	ft_map_errors(int nb_error, t_game *game);
 void	ft_texture_errors(int nb_error, t_game *game);
+void	check_path_and_color(t_game *game);
+
 //	TOOLS
 void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);
 int		ft_strstr(char *str, char *to_find);

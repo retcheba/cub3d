@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:28:28 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 16:19:31 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:59:41 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,19 @@ void	check_scene_errors(int argc, char **argv, t_game *game)
 	check_scene_name(argv[1]);
 	game->scene_name = argv[1];
 	check_open_and_close_file(game->scene_name);
+}
+
+void	check_path_and_color(t_game *game)
+{
+	printf("textures : \n%s%s%s%s%s%s\n", game->path_to_the_north_texture,
+		game->path_to_the_east_texture, game->path_to_the_south_texture,
+		game->path_to_the_west_texture, game->ceiling_color, game->floor_color);
+		
+	if (game->path_to_the_north_texture == NULL)
+		ft_texture_errors(TX_FILE_ERROR, game);
+	if (ft_strlen(game->path_to_the_north_texture) <= 4)
+		ft_texture_errors(TX_FILE_ERROR, game);
+	//if (ft_strncmp(game->path_to_the_north_texture
+	//		+ ft_strlen(game->path_to_the_north_texture) - 4, ".xpm", 4) != 0)
+	//	ft_texture_errors(TX_FILE_ERROR, game);
 }

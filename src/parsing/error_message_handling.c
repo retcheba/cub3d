@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:18 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/12 16:19:46 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:10:32 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	ft_free_and_exit(t_game *game)
 		free (game->floor_color);
 	if (game->ceiling_color)
 		free (game->ceiling_color);
-	//if (game->map)
-	//free (game->map);
+	if (game->map)
+		free (game->map);
 }
 
 //FILE ERRORS
@@ -52,7 +52,7 @@ void	ft_texture_errors(int nb_error, t_game *game)
 {
 	if (nb_error == TX_FILE_ERROR)
 	{
-		ft_putstr_fd("Error\nWrong or missing texture file.", 2);
+		ft_putstr_fd("Error\nWrong or missing texture file.\n", 2);
 		ft_free_and_exit(game);
 		exit(1);
 	}
@@ -64,6 +64,8 @@ void	ft_map_errors(int nb_error, t_game *game)
 	(void)game;
 	if (nb_error == MAP_ELEM_ERROR)
 		ft_putstr_fd("Error\nMap elements are not correct.\n", 2);
+	if (nb_error == PLAYER_ERROR)
+		ft_putstr_fd("Error\nThere are more or less then one player.\n", 2);
 	ft_free_and_exit(game);
 	exit(1);
 }

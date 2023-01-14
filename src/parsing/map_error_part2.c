@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_error_part2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/14 01:54:19 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:38:24 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,29 @@ static void	get_map_size(t_game *game)
 	game->len_x = len_longest_line;
 }
 
+static unsigned int	check_only_one_player(t_game *game)
+{
+	unsigned int	nb_players;
+	int				i;
+	int				j;
+
+	nb_players = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'N' || game->map[i][j] == 'W'
+				|| game->map[i][j] == 'E' || game->map[i][j] == 'S')
+				nb_players++;
+			j++;
+		}
+		i++;
+	}
+	return (nb_players);
+}
+
 static void	check_all_map_elements(t_game *game)
 {
 	int	i;
@@ -87,6 +110,8 @@ static void	check_all_map_elements(t_game *game)
 		}
 		i++;
 	}
+	if (check_only_one_player(game) != 1)
+		ft_map_errors(PLAYER_ERROR, game);
 }
 
 /*static void print_map(t_game *game) //fonction à supprimer
@@ -141,11 +166,13 @@ static void	get_player_pos_and_angle(t_game *game)
 int	map_error_part2(t_game *game)//renommer
 {
 	(void)game;
-	//check_textures(game);
 	/*
 	Vérifier:
 	-	les paths pour les textures
 	-	les couleurs*/
+	check_path_and_color(game);
+	//check_textures(game);
+
 	//print_map(game); //fonction à supprimer
 	check_all_map_elements(game); // check caracteres " ", 1, 0, N, W, S, E
 	get_map_size(game); //recuperer len_x et len_y
