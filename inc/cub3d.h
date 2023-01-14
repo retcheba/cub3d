@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 18:33:28 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/14 02:19:50 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include <math.h>
 # include <stdio.h>
 
+// ERROR
 # define ARG_ERROR			1
 # define FILE_NAME_ERROR	2
 # define FD_ERROR			3
 # define CL_ERROR			4
 # define MAP_ELEM_ERROR		5
 # define TX_FILE_ERROR		6
+// KEYS
 # define ESC 				65307
 # define W 					119
 # define S 					115
@@ -32,9 +34,9 @@
 # define D 					100
 # define LEFT				65361
 # define RIGHT				65363
-# define PI					3.14159265359
-# define SPEED				0.01
-# define ROTATE_SPEED		0.0005
+// SPEED
+# define SPEED				0.07
+# define ROTATE_SPEED		0.007
 
 typedef struct s_img_data
 {
@@ -79,7 +81,9 @@ typedef struct s_game
 	int			len_x;
 	int			len_y;
 	int			cell_size;
+	float		lines_len[900];
 	t_img_data	mini_map;
+	t_img_data	background_map;
 }	t_game;
 
 //	MAIN FUNCTIONS
@@ -89,6 +93,7 @@ int		ft_keypress(int keycode, t_game *game);
 int		ft_keyrelease(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_draw_lines(t_game *game, t_img_data *mini_map);
+void	ft_init_background_map(t_game *game, t_img_data	*background_map);
 //	PARSING
 void	ft_parsing(t_game *game);
 void	check_scene_errors(int argc, char **argv, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:46:49 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 22:42:10 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:36:18 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_draw_player(t_game *game, t_img_data *mini_map)
 }
 
 static void	ft_draw_one_square(t_game *game, int start_x, int start_y, \
-	int color)
+	int c)
 {
 	int	i;
 	int	j;
@@ -42,7 +42,7 @@ static void	ft_draw_one_square(t_game *game, int start_x, int start_y, \
 		j = start_x;
 		while (j < start_x + game->cell_size)
 		{
-			my_mlx_pixel_put(&game->mini_map, i, j, color);
+			my_mlx_pixel_put(&game->mini_map, i, j, c);
 			j++;
 		}
 		i++;

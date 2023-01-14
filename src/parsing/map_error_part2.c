@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 18:41:35 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/14 01:54:19 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,11 @@ static void	check_all_map_elements(t_game *game)
 static void	get_player_angle(t_game *game, int i, int j)
 {
 	if (game->map[i][j] == 'N')
-		game->pa = PI / 2;
+		game->pa = M_PI / 2;
 	if (game->map[i][j] == 'S')
-		game->pa = (3 * PI) / 2;
+		game->pa = (3 * M_PI) / 2;
 	if (game->map[i][j] == 'W')
-		game->pa = PI;
+		game->pa = M_PI;
 	if (game->map[i][j] == 'E')
 		game->pa = 0;
 }

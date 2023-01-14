@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 22:29:25 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/14 02:14:44 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void	ft_up(t_game *game)
 	game->px = x2;
 	game->py = y2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
 }
 
 void	ft_down(t_game *game)
@@ -40,8 +43,11 @@ void	ft_down(t_game *game)
 	game->px = x2;
 	game->py = y2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
 }
 
 void	ft_left(t_game *game)
@@ -56,8 +62,11 @@ void	ft_left(t_game *game)
 	game->px = x2;
 	game->py = y2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
 }
 
 void	ft_right(t_game *game)
@@ -72,36 +81,45 @@ void	ft_right(t_game *game)
 	game->px = x2;
 	game->py = y2;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
 }
 
 void	ft_rotate_left(t_game *game)
 {
 	game->pa = game->pa + ROTATE_SPEED;
-	if (game->pa > (2 * PI))
-		game->pa -= (2 * PI);
-	game->pdx = cos(game->pa) * SPEED;
-	game->pdy = sin(game->pa) * SPEED;
-	game->pdx2 = cos(game->pa + (PI / 2)) * SPEED;
-	game->pdy2 = sin(game->pa + (PI / 2)) * SPEED;
+	if (game->pa > (2.0 * M_PI))
+		game->pa -= (2.0 * M_PI);
+	game->pdx = cosf(game->pa) * SPEED;
+	game->pdy = sinf(game->pa) * SPEED;
+	game->pdx2 = cosf(game->pa + (M_PI / 2.0)) * SPEED;
+	game->pdy2 = sinf(game->pa + (M_PI / 2.0)) * SPEED;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
 }
 
 void	ft_rotate_right(t_game *game)
 {
 	game->pa = game->pa - ROTATE_SPEED;
 	if (game->pa < 0)
-		game->pa += (2 * PI);
-	game->pdx = cos(game->pa) * SPEED;
-	game->pdy = sin(game->pa) * SPEED;
-	game->pdx2 = cos(game->pa + (PI / 2)) * SPEED;
-	game->pdy2 = sin(game->pa + (PI / 2)) * SPEED;
+		game->pa += (2.0 * M_PI);
+	game->pdx = cosf(game->pa) * SPEED;
+	game->pdy = sinf(game->pa) * SPEED;
+	game->pdx2 = cosf(game->pa + (M_PI / 2.0)) * SPEED;
+	game->pdy2 = sinf(game->pa + (M_PI / 2.0)) * SPEED;
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
 }
 
 int	ft_moves(t_game *game)

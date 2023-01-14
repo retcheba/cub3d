@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/12 18:40:31 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/14 02:12:57 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,18 @@ static void	ft_init_game(t_game *game)
 	game->RIGHT_DOWN = 0;
 }
 
-static void ft_init_values(t_game *game)
+static void	ft_init_values(t_game *game)
 {
-	game->pdx = cos(game->pa) * SPEED;
-	game->pdy = sin(game->pa) * SPEED;
-	game->pdx2 = cos(game->pa + (PI / 2)) * SPEED;
-	game->pdy2 = sin(game->pa + (PI / 2)) * SPEED;
+	game->pdx = cosf(game->pa) * SPEED;
+	game->pdy = sinf(game->pa) * SPEED;
+	game->pdx2 = cosf(game->pa + (M_PI / 2.0)) * SPEED;
+	game->pdy2 = sinf(game->pa + (M_PI / 2.0)) * SPEED;
 	game->cell_size = 12;
 	game->px = (game->x * game->cell_size) - (game->cell_size / 2);
 	game->py = (game->y * game->cell_size) - (game->cell_size / 2);
+	// A RECUP DU PARSING
+	game->c_color = 0x87CEEB;
+	game->f_color = 0xFF7F00;
 }
 
 int	main(int argc, char **argv)
@@ -55,10 +58,12 @@ int	main(int argc, char **argv)
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \
 		"cub3d");
 	ft_init_mini_map(&game, &game.mini_map);
-	mlx_hook(game.win, 17, (1L<<0), ft_close, &game);
-	mlx_hook(game.win, 2, (1L<<0), ft_keypress, &game);
-	mlx_hook(game.win, 3, (1L<<1), ft_keyrelease, &game);
+	ft_init_background_map(&game, &game.background_map);
+	mlx_hook(game.win, 17, 1L<<0, ft_close, &game);
+	mlx_hook(game.win, 2, 1L<<0, ft_keypress, &game);
+	mlx_hook(game.win, 3, 1L<<1, ft_keyrelease, &game);
 	mlx_loop_hook(game.mlx, ft_moves, &game);
+	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, 450, 50);
 	mlx_put_image_to_window(game.mlx, game.win, game.mini_map.img, 10, 10);
 	mlx_loop(game.mlx);
 	return (0);
@@ -67,6 +72,7 @@ int	main(int argc, char **argv)
 int	ft_close(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
