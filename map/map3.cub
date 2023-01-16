@@ -1,9 +1,9 @@
 NO slkdfj.xpm
 SO ../textures/test.xpm
 WE ../textures/test.xpm
-EA ../textures/test.xpm
+EA .xpm
 
-F 220,100,0
+F 0,0,
 C 225,30,0
 
  1111111

@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:18 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/14 18:10:32 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:18:47 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,18 @@ void	ft_scene_file_error(int nb_error)
 	exit(1);
 }
 
-//TEXTURE ERRORS
-void	ft_texture_errors(int nb_error, t_game *game)
+//TEXTURE AND COLOR ERRORS
+void	ft_texture_and_color_errors(int nb_error, t_game *game)
 {
 	if (nb_error == TX_FILE_ERROR)
 	{
 		ft_putstr_fd("Error\nWrong or missing texture file.\n", 2);
+		ft_free_and_exit(game);
+		exit(1);
+	}
+	if (nb_error == COLOR_ERROR)
+	{
+		ft_putstr_fd("Error\nWrong color format.\n", 2);
 		ft_free_and_exit(game);
 		exit(1);
 	}
