@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:28:28 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/16 12:33:18 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:38:05 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,23 @@ void	check_path_and_color(t_game *game)
 	if (game->path_to_the_north_texture == NULL || game->path_to_the_east_texture == NULL 
 		|| game->path_to_the_south_texture == NULL || game->path_to_the_west_texture == NULL)
 		ft_texture_and_color_errors(TX_FILE_ERROR, game);
-	if (ft_strlen(game->path_to_the_north_texture) < 4
-		|| ft_strlen(game->path_to_the_east_texture) < 4
-		|| ft_strlen(game->path_to_the_south_texture) < 4
-		|| ft_strlen(game->path_to_the_west_texture) < 4)
+	//printf("len east %zu\n", ft_strlen(game->path_to_the_east_texture));
+	if (ft_strlen(game->path_to_the_north_texture) <= 5
+		|| ft_strlen(game->path_to_the_east_texture) <= 5
+		|| ft_strlen(game->path_to_the_south_texture) <= 5
+		|| ft_strlen(game->path_to_the_west_texture) <= 5)
 		ft_texture_and_color_errors(TX_FILE_ERROR, game);
-	//if (ft_strncmp(game->path_to_the_north_texture
-	//		+ ft_strlen(game->path_to_the_north_texture) - 4, ".xpm", 4) != 0)
-	//	ft_texture_errors(TX_FILE_ERROR, game);
-	printf("colors : \n%s%s\n", game->ceiling_color, game->floor_color);
+	/*if (ft_strncmp(game->path_to_the_north_texture
+			+ ft_strlen(game->path_to_the_north_texture) - 5, ".xpm\n", 5) != 0)
+		ft_texture_and_color_errors(TX_FILE_ERROR, game);*/
+	//printf("colors : \n%s%s\n", game->ceiling_color, game->floor_color);
+	//printf("len floor color %zu\n", ft_strlen(game->floor_color));
+	//printf("len ceiling color %zu\n", ft_strlen(game->ceiling_color));
 	if (game->ceiling_color == NULL || game->floor_color == NULL)
 		ft_texture_and_color_errors(COLOR_ERROR, game);
-	if (ft_strlen(game->ceiling_color) < 5 || ft_strlen(game->floor_color) < 5)
+	if (ft_strlen(game->ceiling_color) <= 5 || ft_strlen(game->floor_color) <= 5)
 		ft_texture_and_color_errors(COLOR_ERROR, game);
+	if (ft_strlen(game->ceiling_color) >= 13 || ft_strlen(game->floor_color) >= 13)
+		ft_texture_and_color_errors(COLOR_ERROR, game);
+	get_colors(game);
 }
