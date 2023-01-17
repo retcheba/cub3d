@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/14 02:12:57 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/17 08:59:14 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	ft_init_values(t_game *game)
 	game->px = (game->x * game->cell_size) - (game->cell_size / 2);
 	game->py = (game->y * game->cell_size) - (game->cell_size / 2);
 	// A RECUP DU PARSING
-	game->c_color = 0x87CEEB;
-	game->f_color = 0xFF7F00;
+	//game->c_color = 0x87CEEB; //OK
+	//game->f_color = 0xFF7F00; //OK
 }
 
 int	main(int argc, char **argv)

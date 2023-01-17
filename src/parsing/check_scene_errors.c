@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:28:28 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/16 18:38:05 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:22:43 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ void	check_scene_errors(int argc, char **argv, t_game *game)
 
 void	check_path_and_color(t_game *game)
 {
-	printf("textures : \n%s%s%s%s\n", game->path_to_the_north_texture,
-		game->path_to_the_east_texture, game->path_to_the_south_texture,
-		game->path_to_the_west_texture);
 	if (game->path_to_the_north_texture == NULL || game->path_to_the_east_texture == NULL 
 		|| game->path_to_the_south_texture == NULL || game->path_to_the_west_texture == NULL)
 		ft_texture_and_color_errors(TX_FILE_ERROR, game);
-	//printf("len east %zu\n", ft_strlen(game->path_to_the_east_texture));
 	if (ft_strlen(game->path_to_the_north_texture) <= 5
 		|| ft_strlen(game->path_to_the_east_texture) <= 5
 		|| ft_strlen(game->path_to_the_south_texture) <= 5

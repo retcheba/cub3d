@@ -2,8 +2,8 @@ SRC_DIR		= src
 OBJ_DIR		= obj
 SRCS		= main.c parsing/parsing.c parsing/check_scene_errors.c parsing/map_error_part2.c  \
 				init_mini_map.c draw_lines.c init_background_map.c keypress.c tools.c \
-				parsing/error_message_handling.c parsing/colors.c 
-
+				parsing/error_message_handling.c parsing/check_color_errors.c parsing/colors.c \
+				
 
 SRC			= $(addprefix src/, $(SRCS))
 OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

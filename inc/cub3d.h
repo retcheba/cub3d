@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/16 15:39:19 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/17 08:52:09 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	ft_map_errors(int nb_error, t_game *game);
 void	ft_texture_and_color_errors(int nb_error, t_game *game);
 void	check_path_and_color(t_game *game);
 void	get_textures(t_game *game);
+void	check_color_errors(t_game *game);
 void	get_colors(t_game *game);
 
 //	TOOLS
