@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 13:55:22 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:02:36 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ void	check_path_and_color(t_game *game);
 void	get_textures(t_game *game);
 void	check_color_errors(t_game *game);
 void	get_colors(t_game *game);
-
+void	get_floor_color(t_game *game);
+void	get_ceiling_color(t_game *game);
 //	TOOLS
 void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);
 int		ft_strstr(char *str, char *to_find);

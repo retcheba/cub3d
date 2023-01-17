@@ -1,10 +1,10 @@
-NO slkdfj.xpm
+NO d.xpm
 SO ../textures/test.xpm
 WE ../textures/test.xpm
 EA d.xdm
 
-F 01,0,0
-C 225,030,011
+F 0,0,255
+C 22,30,255
 
  1111111
 11000101
