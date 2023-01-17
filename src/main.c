@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 08:59:14 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:46:59 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_init_game(t_game *game)
 {
-	game->win_width = 1400;
-	game->win_height = 865;
+	game->win_width = 1000;
+	game->win_height = 800;
 	game->path_to_the_north_texture = NULL;
 	game->path_to_the_south_texture = NULL;
 	game->path_to_the_west_texture = NULL;
@@ -63,8 +63,8 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, 2, 1L<<0, ft_keypress, &game);
 	mlx_hook(game.win, 3, 1L<<1, ft_keyrelease, &game);
 	mlx_loop_hook(game.mlx, ft_moves, &game);
-	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, 450, 50);
 	mlx_put_image_to_window(game.mlx, game.win, game.mini_map.img, 10, 10);
+	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, 300, 300);
 	mlx_loop(game.mlx);
 	return (0);
 }

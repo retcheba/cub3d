@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 08:52:09 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:55:22 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,19 @@
 # define LEFT				65361
 # define RIGHT				65363
 // SPEED
-# define SPEED				0.07
-# define ROTATE_SPEED		0.007
+# define SPEED				0.05
+# define ROTATE_SPEED		0.005
+// OTHER
+# define DR					0.00174533
+# define NORTH				10
+# define SOUTH				11
+# define EAST				12
+# define WEST				13
+# define WHITE				0xFFFFFF
+# define RED				0xFF0000
+# define GREEN				0x00FF00
+# define BLUE				0x0000FF
+# define YELLOW				0xFFFF00
 
 typedef struct s_img_data
 {
@@ -83,7 +94,7 @@ typedef struct s_game
 	int			len_x;
 	int			len_y;
 	int			cell_size;
-	float		lines_len[900];
+	float		lines_len[600][2];;
 	t_img_data	mini_map;
 	t_img_data	background_map;
 }	t_game;

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/14 02:14:44 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:49:03 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_up(t_game *game)
 	ft_init_mini_map(game, &game->mini_map);
 	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
-	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 300, 300);
 }
 
 void	ft_down(t_game *game)
@@ -47,7 +47,7 @@ void	ft_down(t_game *game)
 	ft_init_mini_map(game, &game->mini_map);
 	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
-	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 300, 300);
 }
 
 void	ft_left(t_game *game)
@@ -66,7 +66,7 @@ void	ft_left(t_game *game)
 	ft_init_mini_map(game, &game->mini_map);
 	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
-	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 300, 300);
 }
 
 void	ft_right(t_game *game)
@@ -85,7 +85,7 @@ void	ft_right(t_game *game)
 	ft_init_mini_map(game, &game->mini_map);
 	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
-	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 300, 300);
 }
 
 void	ft_rotate_left(t_game *game)
@@ -102,7 +102,7 @@ void	ft_rotate_left(t_game *game)
 	ft_init_mini_map(game, &game->mini_map);
 	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
-	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 300, 300);
 }
 
 void	ft_rotate_right(t_game *game)
@@ -119,7 +119,7 @@ void	ft_rotate_right(t_game *game)
 	ft_init_mini_map(game, &game->mini_map);
 	ft_init_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
-	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 450, 50);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, 300, 300);
 }
 
 int	ft_moves(t_game *game)
