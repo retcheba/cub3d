@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 13:46:59 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:30:58 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_init_game(t_game *game)
 {
-	game->win_width = 1000;
-	game->win_height = 800;
+	game->win_width = WIN_WIDTH;
+	game->win_height = WIN_HEIGHT;
 	game->path_to_the_north_texture = NULL;
 	game->path_to_the_south_texture = NULL;
 	game->path_to_the_west_texture = NULL;
@@ -39,11 +39,13 @@ static void	ft_init_values(t_game *game)
 	game->cell_size = 12;
 	game->px = (game->x * game->cell_size) - (game->cell_size / 2);
 	game->py = (game->y * game->cell_size) - (game->cell_size / 2);
-	// A RECUP DU PARSING
-	//game->c_color = 0x87CEEB; //OK
-	//game->f_color = 0xFF7F00; //OK
 }
-
+/*
+static void	ft_init_textures(t_game *game)
+{
+	game->texture = mlx_xpm_file_to_image(game->mlx, "../textures/test.xpm", game->img_width, game->img_height);
+}
+*/
 int	main(int argc, char **argv)
 {
 	t_game		game;
@@ -55,16 +57,17 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_init_values(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, \
+	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height + 20 + 12 * game.len_y, \
 		"cub3d");
+	//ft_init_textures(&game);
 	ft_init_mini_map(&game, &game.mini_map);
 	ft_init_background_map(&game, &game.background_map);
 	mlx_hook(game.win, 17, 1L<<0, ft_close, &game);
 	mlx_hook(game.win, 2, 1L<<0, ft_keypress, &game);
 	mlx_hook(game.win, 3, 1L<<1, ft_keyrelease, &game);
 	mlx_loop_hook(game.mlx, ft_moves, &game);
+	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, X_IMG, Y_IMG + 20 + 12 * game.len_y);
 	mlx_put_image_to_window(game.mlx, game.win, game.mini_map.img, 10, 10);
-	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, 300, 300);
 	mlx_loop(game.mlx);
 	return (0);
 }

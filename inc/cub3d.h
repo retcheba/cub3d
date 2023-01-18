@@ -37,10 +37,10 @@
 # define LEFT				65361
 # define RIGHT				65363
 // SPEED
-# define SPEED				0.05
-# define ROTATE_SPEED		0.005
+# define SPEED				0.085
+# define ROTATE_SPEED		0.0055
 // OTHER
-# define DR					0.00174533
+# define DR					0.0174533
 # define NORTH				10
 # define SOUTH				11
 # define EAST				12
@@ -50,6 +50,15 @@
 # define GREEN				0x00FF00
 # define BLUE				0x0000FF
 # define YELLOW				0xFFFF00
+# define NB_RAYS			450
+# define RAY_MULTI			2
+# define IMG_WIDTH			NB_RAYS * RAY_MULTI
+# define IMG_HEIGHT			IMG_WIDTH / 1.618
+# define X_IMG				0
+# define Y_IMG				0
+# define WIN_WIDTH			IMG_WIDTH
+# define WIN_HEIGHT			IMG_HEIGHT 
+# define CUBE_HEIGHT		9000.0
 
 typedef struct s_img_data
 {
@@ -94,7 +103,7 @@ typedef struct s_game
 	int			len_x;
 	int			len_y;
 	int			cell_size;
-	float		lines_len[600][2];;
+	float		lines_len[NB_RAYS][2];;
 	t_img_data	mini_map;
 	t_img_data	background_map;
 }	t_game;
