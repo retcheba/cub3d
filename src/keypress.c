@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 16:46:31 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:53:00 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_up(t_game *game)
 
 	x2 = game->px + game->pdx;
 	y2 = game->py - game->pdy;
-	if (game->map[(int)(y2 - game->pdy * 50.0) / game->cell_size][(int)(x2 + game->pdx * 50.0) / game->cell_size] == '1')
+	if (game->map[(int)(y2 - game->pdy * COLLISION) / game->cell_size][(int)(x2 + game->pdx * COLLISION) / game->cell_size] == '1')
 		return ;
 	game->px = x2;
 	game->py = y2;
@@ -38,7 +38,7 @@ void	ft_down(t_game *game)
 
 	x2 = game->px - game->pdx;
 	y2 = game->py + game->pdy;
-	if (game->map[(int)(y2 + game->pdy * 50.0) / game->cell_size][(int)(x2 - game->pdx * 50.0) / game->cell_size] == '1')
+	if (game->map[(int)(y2 + game->pdy * COLLISION) / game->cell_size][(int)(x2 - game->pdx * COLLISION) / game->cell_size] == '1')
 		return ;
 	game->px = x2;
 	game->py = y2;
@@ -57,7 +57,7 @@ void	ft_left(t_game *game)
 
 	x2 = game->px + game->pdx2;
 	y2 = game->py - game->pdy2;
-	if (game->map[(int)(y2 - game->pdy2 * 50.0) / game->cell_size][(int)(x2 + game->pdx2 * 50.0) / game->cell_size] == '1')
+	if (game->map[(int)(y2 - game->pdy2 * COLLISION) / game->cell_size][(int)(x2 + game->pdx2 * COLLISION) / game->cell_size] == '1')
 		return ;
 	game->px = x2;
 	game->py = y2;
@@ -76,7 +76,7 @@ void	ft_right(t_game *game)
 
 	x2 = game->px - game->pdx2;
 	y2 = game->py + game->pdy2;
-	if (game->map[(int)(y2 + game->pdy2 * 50.0) / game->cell_size][(int)(x2 - game->pdx2 * 50.0) / game->cell_size] == '1')
+	if (game->map[(int)(y2 + game->pdy2 * COLLISION) / game->cell_size][(int)(x2 - game->pdx2 * COLLISION) / game->cell_size] == '1')
 		return ;
 	game->px = x2;
 	game->py = y2;

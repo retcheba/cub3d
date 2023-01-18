@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 17:02:36 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/19 00:13:07 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@
 # define LEFT				65361
 # define RIGHT				65363
 // SPEED
-# define SPEED				0.085
-# define ROTATE_SPEED		0.0055
+# define SPEED				0.25
+# define ROTATE_SPEED		0.011
+# define COLLISION			15.0
 // OTHER
 # define DR					0.0174533
 # define NORTH				10
@@ -58,7 +59,7 @@
 # define Y_IMG				0
 # define WIN_WIDTH			IMG_WIDTH
 # define WIN_HEIGHT			IMG_HEIGHT 
-# define CUBE_HEIGHT		9000.0
+# define CUBE_HEIGHT		10000.0
 
 typedef struct s_img_data
 {
@@ -87,6 +88,8 @@ typedef struct s_game
 	char		*path_to_the_south_texture;
 	char		*path_to_the_west_texture;
 	char		*path_to_the_east_texture;
+	int			texture_width;
+	int			texture_height;
 	char		*floor_color;
 	char		*ceiling_color;
 	int			f_color;
@@ -103,9 +106,13 @@ typedef struct s_game
 	int			len_x;
 	int			len_y;
 	int			cell_size;
-	float		lines_len[NB_RAYS][2];;
+	float		lines_len[NB_RAYS][4];;
 	t_img_data	mini_map;
 	t_img_data	background_map;
+	t_img_data	N_texture;
+	t_img_data	S_texture;
+	t_img_data	W_texture;
+	t_img_data	E_texture;
 }	t_game;
 
 //	MAIN FUNCTIONS
@@ -116,6 +123,9 @@ int		ft_keyrelease(int keycode, t_game *game);
 void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_draw_lines(t_game *game, t_img_data *mini_map);
 void	ft_init_background_map(t_game *game, t_img_data	*background_map);
+int		get_color_texture(t_img_data *data, int x, int y);
+int		get_y_texture(int y, float len);
+int		get_x_texture(t_game *game, int i);
 //	PARSING
 void	ft_parsing(t_game *game);
 void	check_scene_errors(int argc, char **argv, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 15:47:14 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:33:16 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static float	ft_draw_one_line(t_game *game, t_img_data *mini_map, float x2, floa
 	dx = fabsf(x2 - game->px);
 	dy = fabsf(y2 - game->py);
 	err = dx - dy;
-	while (game->map[(int)y / game->cell_size][(int)x / game->cell_size] != '1')
-	//	&& !(game->map[(int)(y - 1.0) / game->cell_size][(int)x / game->cell_size] == '1'
-	//	&& game->map[(int)y / game->cell_size][(int)(x - 1.0) / game->cell_size] == '1')
+	while (game->map[(int)y / game->cell_size][(int)x / game->cell_size] != '1'
+		&& !(game->map[(int)(y - 0.1) / game->cell_size][(int)x / game->cell_size] == '1'
+		&& game->map[(int)y / game->cell_size][(int)(x - 0.1) / game->cell_size] == '1'))
 	{
 		ox = x;
 		oy = y;
@@ -51,6 +51,8 @@ static float	ft_draw_one_line(t_game *game, t_img_data *mini_map, float x2, floa
 				y -= 0.1;
 		}
 	}
+	game->lines_len[i][2] = x;
+	game->lines_len[i][3] = y;
 	game->lines_len[i][1] = 0;
 	if (((int)oy - game->cell_size) / game->cell_size == (int)y /game->cell_size)
 		game->lines_len[i][1] = NORTH;

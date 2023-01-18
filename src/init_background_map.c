@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:05:45 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 16:29:20 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:32:38 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,15 @@ static void	ft_draw_walls(t_game *game, t_img_data *background_map, int img_heig
 		while (y < ((img_height / 2) + (len / 2)))
 		{
 			if (game->lines_len[x][1] == NORTH)
-				color = YELLOW;
+				color = get_color_texture(&game->N_texture, get_x_texture(game, x), get_y_texture((y - (img_height / 2) + (len / 2)), len));
 			else if (game->lines_len[x][1] == SOUTH)
-				color = RED;
+				color = get_color_texture(&game->S_texture, get_x_texture(game, x), get_y_texture((y - (img_height / 2) + (len / 2)), len));
 			else if (game->lines_len[x][1] == WEST)
-				color = GREEN;
+				color = get_color_texture(&game->W_texture, get_x_texture(game, x), get_y_texture((y - (img_height / 2) + (len / 2)), len));
 			else if (game->lines_len[x][1] == EAST)
-				color = BLUE;
+				color = get_color_texture(&game->E_texture, get_x_texture(game, x), get_y_texture((y - (img_height / 2) + (len / 2)), len));
 			else
 				color = 0x000000;
-			//color = WHITE;
 			draw_wall_slice(background_map, img_width - i, y, img_height, color);
 			y++;
 		}
