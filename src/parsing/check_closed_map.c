@@ -6,29 +6,76 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:27:24 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/20 13:03:36 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:39:32 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void	check_surrounded(char **map, unsigned int i, unsigned int j, t_game *game)
+static void	check_surrounded(char **map, unsigned int i, unsigned int j,
+	t_game *game)
 {
 	if (j == 0 || i == 0 || j >= ft_strlen(map[i]) - 2)
-	{
-		printf("i= %d, j=%d - erreur\n", i, j);
 		ft_map_errors(MAP_ELEM_ERROR, game);
-	}
-	if (ft_strchr("0NWES1", map[i - 1][j]) == 0
-		&& ft_strchr("0NWES1", map[i + 1][j]) == 0
-		&& ft_strchr("0NWES1", map[i][j - 1]) == 0
-		&& ft_strchr("0NWES1", map[i][j + 1]) == 0)
-	{
-		printf("i= %d, j=%d - erreur\n", i, j);
+	if (ft_strchr("0NWES1", map[i - 1][j]) == NULL
+		|| ft_strchr("0NWES1", map[i + 1][j]) == NULL
+		|| ft_strchr("0NWES1", map[i][j - 1]) == NULL
+		|| ft_strchr("0NWES1", map[i][j + 1]) == NULL)
 		ft_map_errors(MAP_ELEM_ERROR, game);
-	}
 	else
-		printf("i= %d, j=%d - OK\n", i, j);
+		return ;
+}
+
+static void	check_first_line(char *line, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '0')
+			ft_map_errors(MAP_ELEM_ERROR, game);
+		i++;
+		if (line[i] == '\0' || line[i] == '\n')
+			break ;
+	}
+}
+
+static void	check_first_car_of_line(char *line, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i] != '1')
+		ft_map_errors(MAP_ELEM_ERROR, game);
+}
+
+static void	check_last_car_of_line(char *line, t_game *game)
+{
+	int	i;
+
+	i = ft_strlen(line) - 1;
+	while (line[i] && line[i] == ' ' && line[i] == '\n')
+		i--;
+	if (line[i - 1] != '1')
+		ft_map_errors(MAP_ELEM_ERROR, game);
+}
+
+static void	check_last_line(char *line, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '0')
+			ft_map_errors(MAP_ELEM_ERROR, game);
+		i++;
+		if (line[i] == '\0' || line[i] == '\n')
+			break ;
+	}
 }
 
 void	check_closed_map(char **map, t_game *game)
@@ -36,12 +83,13 @@ void	check_closed_map(char **map, t_game *game)
 	int	i;
 	int	j;
 
-	i = 0;
+	check_first_line(map[0], game);
+	i = 1;
 	while (map[i])
 	{
 		j = 0;
-		//check_first_and_last_line(map[i], game);
-		//check first 1 of column
+		check_first_car_of_line(map[i], game);
+		check_last_car_of_line(map[i], game);
 		while (map[i][j])
 		{
 			while (map[i][j] != '0' && map[i][j] != 'N' && map[i][j] != 'W'
@@ -53,27 +101,9 @@ void	check_closed_map(char **map, t_game *game)
 				check_surrounded(map, i, j, game);
 				j++;
 			}
-			//else
-
 		}
-		printf("%s", map[i]);
+		if (i == ft_nb_lines(game) - 1)
+			check_last_line(map[ft_nb_lines(game) - 1], game);
 		i++;
 	}
-
-
-
-
-
-
-
-	// while (map[i])
-	// {
-	// 	printf("i : %d\n", i);
-	// 	printf("%s", map[i]);
-	// 	if (i >= 1 && i <= ft_nb_lines(game) - 2)
-	// 		check_other_lines(map[i], game);
-	// 	else
-	// 		check_first_and_last_line(map[i], game);
-	// 	i++;
-	// }
 }
