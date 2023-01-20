@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:18 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/17 17:37:29 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/20 21:52:21 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	ft_texture_and_color_errors(int nb_error, t_game *game)
 //MAP ERRORS
 void	ft_map_errors(int nb_error, t_game *game)
 {
-	(void)game;
 	if (nb_error == MAP_ELEM_ERROR)
 		ft_putstr_fd("Error\nMap elements are not correct.\n", 2);
 	if (nb_error == PLAYER_ERROR)
