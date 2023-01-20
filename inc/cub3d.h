@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 17:02:36 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:13:24 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,11 @@ void	ft_init_background_map(t_game *game, t_img_data	*background_map);
 //	PARSING
 void	ft_parsing(t_game *game);
 void	check_scene_errors(int argc, char **argv, t_game *game);
+int		ft_nb_lines(t_game *game);
 int		map_error_part2(t_game *game);
 void	ft_scene_file_error(int nb_error);
 void	ft_map_errors(int nb_error, t_game *game);
+void	check_closed_map(char **map, t_game *game);
 void	ft_texture_and_color_errors(int nb_error, t_game *game);
 void	check_path_and_color(t_game *game);
 void	get_textures(t_game *game);

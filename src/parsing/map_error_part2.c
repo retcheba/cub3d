@@ -6,20 +6,20 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 17:48:48 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:56:07 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int	ft_nb_lines(t_game *game)
+int	ft_nb_lines(t_game *game)
 {
 	int	nb_lines;
 
 	nb_lines = 0;
 	while (game->map[nb_lines])
 		nb_lines++;
-	if (nb_lines <= 1)
+	if (nb_lines <= 2)
 		ft_map_errors(MAP_ELEM_ERROR, game);
 	return (nb_lines);
 }
@@ -40,6 +40,8 @@ static void	get_map_size(t_game *game)
 			len_longest_line = len_next_line;
 		i++;
 	}
+	if (len_longest_line <= 2)
+		ft_map_errors(MAP_ELEM_ERROR, game);
 	game->len_x = len_longest_line;
 }
 
@@ -87,6 +89,7 @@ static void	check_all_map_elements(t_game *game)
 		}
 		i++;
 	}
+	check_closed_map(game->map, game);
 	if (check_only_one_player(game) != 1)
 		ft_map_errors(PLAYER_ERROR, game);
 }
