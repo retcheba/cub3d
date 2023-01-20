@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:05:45 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 22:32:38 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:46:37 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,31 @@ static void	ft_draw_walls(t_game *game, t_img_data *background_map, int img_heig
 	}
 }
 
+static void	ft_draw_gun(t_game *game, t_img_data *background_map, int img_height, int img_width)
+{
+	int	gun_width;
+	int	gun_height;
+	int	x;
+	int	y;
+	int	color;
+
+	gun_width = 150;
+	gun_height = 150;
+	y = 0;
+	while (y < gun_height)
+	{
+		x = -60;
+		while (x < gun_width / 2)
+		{
+			color = get_color_texture(&game->gun, get_coordinates_texture(x + 60, gun_width, game->gun_width), get_coordinates_texture(y, gun_height, game->gun_height));
+			if (color != 10701220)
+				my_mlx_pixel_put(background_map, img_width / 2 + x, img_height - gun_height + y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	ft_init_background_map(t_game *game, t_img_data	*background_map)
 {
 	int	img_width;
@@ -87,4 +112,5 @@ void	ft_init_background_map(t_game *game, t_img_data	*background_map)
 		&background_map->line_length, &background_map->endian);
 	ft_draw_background_color(game, background_map, img_width, img_height);
 	ft_draw_walls(game, background_map, img_height, img_width);
+	ft_draw_gun(game, background_map, img_height, img_width);
 }

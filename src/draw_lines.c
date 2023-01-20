@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 23:33:16 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:23:39 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static float	ft_draw_one_line(t_game *game, t_img_data *mini_map, float x2, floa
 	err = dx - dy;
 	while (game->map[(int)y / game->cell_size][(int)x / game->cell_size] != '1'
 		&& !(game->map[(int)(y - 0.1) / game->cell_size][(int)x / game->cell_size] == '1'
-		&& game->map[(int)y / game->cell_size][(int)(x - 0.1) / game->cell_size] == '1'))
+		&& game->map[(int)y / game->cell_size][(int)(x - 0.1) / game->cell_size] == '1')
+		&& !(game->map[(int)(y - 0.1) / game->cell_size][(int)x / game->cell_size] == '1'
+		&& game->map[(int)y / game->cell_size][(int)(x + 0.1) / game->cell_size] == '1'))
 	{
 		ox = x;
 		oy = y;
@@ -91,7 +93,7 @@ void	ft_draw_lines(t_game *game, t_img_data *mini_map)
 		if (ca < 0.0)
 			ca += 2.0 * M_PI;
 		if (ca > 2.0 * M_PI)
-			ca -= 2/.0 * M_PI;
+			ca -= 2.0 * M_PI;
 		disT = disT * cosf(ca);
 		game->lines_len[i + (nbr / 2)][0] = CUBE_HEIGHT * (1.0 / disT); 
 		i++;

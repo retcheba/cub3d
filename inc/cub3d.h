@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 13:10:03 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:45:25 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define D 					100
 # define LEFT				65361
 # define RIGHT				65363
+# define SPACE				32
 // SPEED
 # define SPEED				0.25
 # define ROTATE_SPEED		0.011
@@ -83,6 +84,7 @@ typedef struct s_game
 	int			D_DOWN;
 	int			LEFT_DOWN;
 	int			RIGHT_DOWN;
+	int			SPACE_DOWN;
 	char		**map;
 	char		*path_to_the_north_texture;
 	char		*path_to_the_south_texture;
@@ -113,6 +115,9 @@ typedef struct s_game
 	t_img_data	S_texture;
 	t_img_data	W_texture;
 	t_img_data	E_texture;
+	t_img_data	gun;
+	int			gun_width;
+	int			gun_height;
 }	t_game;
 
 //	MAIN FUNCTIONS
@@ -124,8 +129,9 @@ void	ft_init_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_draw_lines(t_game *game, t_img_data *mini_map);
 void	ft_init_background_map(t_game *game, t_img_data	*background_map);
 int		get_color_texture(t_img_data *data, int x, int y);
-int		get_y_texture(int y, float len);
+int		get_y_texture(int y1, float len1);
 int		get_x_texture(t_game *game, int i);
+int		get_coordinates_texture(int c1, int len1, int len2);
 //	PARSING
 void	ft_parsing(t_game *game);
 void	check_scene_errors(int argc, char **argv, t_game *game);

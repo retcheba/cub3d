@@ -6,20 +6,28 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:52:14 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 23:34:14 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:05:03 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	get_y_texture(int y_len, float len)
+int	get_coordinates_texture(int c1, int len1, int len2)
 {
-	int	p_len;
-	int	y;
+	int	c2;
 
-	p_len = 140;
-	y = p_len * y_len / (int)len;
-	return (y);
+	c2 = len2 * c1 / len1;
+	return (c2);
+}
+
+int	get_y_texture(int y1, float len1)
+{
+	int	y2;
+	int	len2;
+
+	len2 = 132;
+	y2 = len2 * y1 / (int)len1;
+	return (y2);
 }
 
 int	get_x_texture(t_game *game, int i)
@@ -31,7 +39,7 @@ int	get_x_texture(t_game *game, int i)
 
 	x_ray = 0.0;
 	len = game->cell_size;
-	p_len = 140;
+	p_len = 132;
 	if (game->lines_len[i][1] == NORTH || game->lines_len[i][1] == SOUTH)
 	{
 		x_ray = game->lines_len[i][2] / game->cell_size;
