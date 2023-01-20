@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:38 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/11 16:34:47 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/20 22:17:26 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static int	get_path_and_color_name(t_game *game, char **tab)
 {
+	char	*tmp;
+
+	tmp = NULL;
 	if (ft_strstr(tab[0], "NO"))
-		game->path_to_the_north_texture = ft_strdup(tab[1]);
+		game->path_to_the_north_texture = remove_back_to_ligne(tab[1]);
 	else if (ft_strstr(tab[0], "SO"))
-		game->path_to_the_south_texture = ft_strdup(tab[1]);
+		game->path_to_the_south_texture = remove_back_to_ligne(tab[1]);
 	else if (ft_strstr(tab[0], "WE"))
-		game->path_to_the_west_texture = ft_strdup(tab[1]);
+		game->path_to_the_west_texture = remove_back_to_ligne(tab[1]);
 	else if (ft_strstr(tab[0], "EA"))
-		game->path_to_the_east_texture = ft_strdup(tab[1]);
+		game->path_to_the_east_texture = remove_back_to_ligne(tab[1]);
 	else if (ft_strstr(tab[0], "F"))
 		game->floor_color = ft_strdup(tab[1]);
 	else if (ft_strstr(tab[0], "C"))

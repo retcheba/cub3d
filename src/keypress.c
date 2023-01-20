@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 19:11:07 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 22:05:47 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	ft_shot(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < 10)
+	while (i < 12)
 	{
 		mlx_destroy_image(game->mlx, game->gun.img);
 		mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -141,7 +141,7 @@ void	ft_shot(t_game *game)
 		i++;
 	}
 	i = 0;
-	while (i < 10)
+	while (i < 12)
 	{
 		mlx_destroy_image(game->mlx, game->gun.img);
 		mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -155,7 +155,7 @@ void	ft_shot(t_game *game)
 		i++;
 	}
 	i = 0;
-	while (i < 10)
+	while (i < 12)
 	{
 		mlx_destroy_image(game->mlx, game->gun.img);
 		mlx_destroy_image(game->mlx, game->mini_map.img);
@@ -169,7 +169,7 @@ void	ft_shot(t_game *game)
 		i++;
 	}
 	i = 0;
-	while (i < 10)
+	while (i < 12)
 	{
 		mlx_destroy_image(game->mlx, game->gun.img);
 		mlx_destroy_image(game->mlx, game->mini_map.img);

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 19:30:23 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 22:37:54 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 static void	ft_init_game(t_game *game)
 {
+	game->mlx = NULL;
 	game->win_width = WIN_WIDTH;
 	game->win_height = WIN_HEIGHT;
 	game->path_to_the_north_texture = NULL;
 	game->path_to_the_south_texture = NULL;
 	game->path_to_the_west_texture = NULL;
 	game->path_to_the_east_texture = NULL;
+	game->N_texture.img = NULL;
+	game->S_texture.img = NULL;
+	game->W_texture.img = NULL;
+	game->E_texture.img = NULL;
+	game->gun.img = NULL;
 	game->floor_color = NULL;
 	game->ceiling_color = NULL;
 	game->W_DOWN = 0;
@@ -44,15 +50,19 @@ static void	ft_init_values(t_game *game)
 
 static void	ft_init_textures(t_game *game)
 {
-	game->N_texture.img = mlx_xpm_file_to_image(game->mlx, "textures/N_wall.xpm", &game->texture_width, &game->texture_height);
-	game->S_texture.img = mlx_xpm_file_to_image(game->mlx, "textures/S_wall.xpm", &game->texture_width, &game->texture_height);
-	game->W_texture.img = mlx_xpm_file_to_image(game->mlx, "textures/W_wall.xpm", &game->texture_width, &game->texture_height);
-	game->E_texture.img = mlx_xpm_file_to_image(game->mlx, "textures/E_wall.xpm", &game->texture_width, &game->texture_height);
+	game->N_texture.img = mlx_xpm_file_to_image(game->mlx, game->path_to_the_north_texture, &game->texture_width, &game->texture_height);
+	game->S_texture.img = mlx_xpm_file_to_image(game->mlx, game->path_to_the_south_texture, &game->texture_width, &game->texture_height);
+	game->W_texture.img = mlx_xpm_file_to_image(game->mlx, game->path_to_the_west_texture, &game->texture_width, &game->texture_height);
+	game->E_texture.img = mlx_xpm_file_to_image(game->mlx, game->path_to_the_east_texture, &game->texture_width, &game->texture_height);
+	if (!game->N_texture.img || !game->S_texture.img || !game->W_texture.img || !game->E_texture.img)
+		ft_texture_and_color_errors(TX_FILE_ERROR, game);
 	game->N_texture.addr = mlx_get_data_addr(game->N_texture.img, &game->N_texture.bpp, &game->N_texture.line_length, &game->N_texture.endian);
 	game->S_texture.addr = mlx_get_data_addr(game->S_texture.img, &game->S_texture.bpp, &game->S_texture.line_length, &game->S_texture.endian);
 	game->W_texture.addr = mlx_get_data_addr(game->W_texture.img, &game->W_texture.bpp, &game->W_texture.line_length, &game->W_texture.endian);
 	game->E_texture.addr = mlx_get_data_addr(game->E_texture.img, &game->E_texture.bpp, &game->E_texture.line_length, &game->E_texture.endian);
 	game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun1.xpm", &game->gun_width, &game->gun_height);
+	if (!game->gun.img)
+		ft_texture_and_color_errors(TX_FILE_ERROR, game);
 	game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
 }
 

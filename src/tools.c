@@ -6,11 +6,22 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:38:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/10 22:09:12 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:07:00 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+char	*remove_back_to_ligne(char *str)
+{
+	char	**tab;
+	char	*tmp;
+
+	tab = ft_split(str, '\n');
+	tmp = ft_strdup(tab[0]);
+	free_tab(tab);
+	return (tmp);
+}
 
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 {

@@ -1,7 +1,7 @@
-NO d.xpm
-SO ../textures/test.xpm
-WE ../textures/test.xpm
-EA d.xpm
+NO textures/N_wall.xpm
+SO textures/S_wall.xpm
+WE textures/W_wall.xpm
+EA textures/E_wall.xpm
 
 F 0,0,0
 C 22,30,8

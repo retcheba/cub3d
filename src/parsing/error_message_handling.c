@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_message_handling.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:18 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/17 17:37:29 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/20 22:37:25 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 
 static void	ft_free_scene_and_map(t_game *game)
 {
+	if (game->gun.img)
+		mlx_destroy_image(game->mlx, game->gun.img);
+	if (game->N_texture.img)
+		mlx_destroy_image(game->mlx, game->N_texture.img);
+	if (game->S_texture.img)
+		mlx_destroy_image(game->mlx, game->S_texture.img);
+	if (game->W_texture.img)
+		mlx_destroy_image(game->mlx, game->W_texture.img);
+	if (game->E_texture.img)
+		mlx_destroy_image(game->mlx, game->E_texture.img);
+	if (game->mlx)
+	{
+		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	free(game->path_to_the_north_texture);
 	free(game->path_to_the_south_texture);
 	free(game->path_to_the_west_texture);

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 18:45:25 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:04:03 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void	get_colors(t_game *game);
 void	get_floor_color(t_game *game);
 void	get_ceiling_color(t_game *game);
 //	TOOLS
+char	*remove_back_to_ligne(char *str);
 void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);
 int		ft_strstr(char *str, char *to_find);
 void	free_tab(char **tab);
