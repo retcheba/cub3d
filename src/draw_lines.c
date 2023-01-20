@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 13:52:39 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:33:16 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,37 @@ static float	ft_draw_one_line(t_game *game, t_img_data *mini_map, float x2, floa
 	float	dy;
 	float	err;
 
-	(void)mini_map;
 	x = game->px;
 	y = game->py;
 	dx = fabsf(x2 - game->px);
 	dy = fabsf(y2 - game->py);
 	err = dx - dy;
 	while (game->map[(int)y / game->cell_size][(int)x / game->cell_size] != '1'
-		&& x != x2 && y != y2)
+		&& !(game->map[(int)(y - 0.1) / game->cell_size][(int)x / game->cell_size] == '1'
+		&& game->map[(int)y / game->cell_size][(int)(x - 0.1) / game->cell_size] == '1'))
 	{
-		my_mlx_pixel_put(mini_map, x, y, 0x008000);
 		ox = x;
 		oy = y;
+		my_mlx_pixel_put(mini_map, x, y, 0x008000);
 		if (2 * err > -dy)
 		{
 			err -= dy;
 			if (game->px < x2)
-				x++;
+				x += 0.1;
 			else
-				x--;
+				x -= 0.1;
 		}
 		if (2 * err < dx)
 		{
 			err += dx;
 			if (game->py < y2)
-				y++;
+				y += 0.1;
 			else
-				y--;
+				y -= 0.1;
 		}
 	}
+	game->lines_len[i][2] = x;
+	game->lines_len[i][3] = y;
 	game->lines_len[i][1] = 0;
 	if (((int)oy - game->cell_size) / game->cell_size == (int)y /game->cell_size)
 		game->lines_len[i][1] = NORTH;
@@ -70,17 +72,20 @@ void	ft_draw_lines(t_game *game, t_img_data *mini_map)
 	float	x2;
 	float	y2;
 	float	disT;
+	int		nbr;
 	int		i;
 
-	i = -300;
-	while (i < 300)
+
+	nbr = NB_RAYS;
+	i = - (nbr / 2);
+	while (i < (nbr / 2))
 	{
-		ra = game->pa + ((float)i * (DR * 4.0 / 3.0));
+		ra = game->pa + ((float)i * (DR) * 60 / nbr);
 		if (ra == M_PI || ra == 0.0 || ra == M_PI / 2.0 || ra == 3.0 * M_PI / 2.0)
-			ra += (DR * 4.0 / 3.0);
+			ra += (DR * 60 / nbr);
 		x2 = game->px + cosf(ra) * 10000.0;
 		y2 = game->py - sinf(ra) * 10000.0;
-		disT = ft_draw_one_line(game, mini_map, x2, y2, i + 300);
+		disT = ft_draw_one_line(game, mini_map, x2, y2, i + (nbr / 2));
 		// fix fisheye
 		ca = game->pa - ra;
 		if (ca < 0.0)
@@ -88,7 +93,7 @@ void	ft_draw_lines(t_game *game, t_img_data *mini_map)
 		if (ca > 2.0 * M_PI)
 			ca -= 2/.0 * M_PI;
 		disT = disT * cosf(ca);
-		game->lines_len[i + 300][0] = 3000.0 * (1.0 / disT); 
+		game->lines_len[i + (nbr / 2)][0] = CUBE_HEIGHT * (1.0 / disT); 
 		i++;
 	}
 }
