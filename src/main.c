@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/19 00:10:16 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:30:23 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	ft_init_game(t_game *game)
 	game->D_DOWN = 0;
 	game->LEFT_DOWN = 0;
 	game->RIGHT_DOWN = 0;
+	game->SPACE_DOWN = 0;
 }
 
 static void	ft_init_values(t_game *game)
@@ -51,6 +52,8 @@ static void	ft_init_textures(t_game *game)
 	game->S_texture.addr = mlx_get_data_addr(game->S_texture.img, &game->S_texture.bpp, &game->S_texture.line_length, &game->S_texture.endian);
 	game->W_texture.addr = mlx_get_data_addr(game->W_texture.img, &game->W_texture.bpp, &game->W_texture.line_length, &game->W_texture.endian);
 	game->E_texture.addr = mlx_get_data_addr(game->E_texture.img, &game->E_texture.bpp, &game->E_texture.line_length, &game->E_texture.endian);
+	game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun1.xpm", &game->gun_width, &game->gun_height);
+	game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
 }
 
 int	main(int argc, char **argv)
@@ -81,6 +84,7 @@ int	main(int argc, char **argv)
 
 int	ft_close(t_game *game)
 {
+	mlx_destroy_image(game->mlx, game->gun.img);
 	mlx_destroy_image(game->mlx, game->N_texture.img);
 	mlx_destroy_image(game->mlx, game->S_texture.img);
 	mlx_destroy_image(game->mlx, game->W_texture.img);

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/18 23:53:00 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:11:07 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,78 @@ void	ft_rotate_right(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
 }
 
+void	ft_shot(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 10)
+	{
+		mlx_destroy_image(game->mlx, game->gun.img);
+		mlx_destroy_image(game->mlx, game->mini_map.img);
+		mlx_destroy_image(game->mlx, game->background_map.img);
+		game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun1.xpm", &game->gun_width, &game->gun_height);
+		game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
+		ft_init_mini_map(game, &game->mini_map);
+		ft_init_background_map(game, &game->background_map);
+		mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, X_IMG, Y_IMG + 20 + 12 * game->len_y);
+		mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		i++;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		mlx_destroy_image(game->mlx, game->gun.img);
+		mlx_destroy_image(game->mlx, game->mini_map.img);
+		mlx_destroy_image(game->mlx, game->background_map.img);
+		game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun2.xpm", &game->gun_width, &game->gun_height);
+		game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
+		ft_init_mini_map(game, &game->mini_map);
+		ft_init_background_map(game, &game->background_map);
+		mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, X_IMG, Y_IMG + 20 + 12 * game->len_y);
+		mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		i++;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		mlx_destroy_image(game->mlx, game->gun.img);
+		mlx_destroy_image(game->mlx, game->mini_map.img);
+		mlx_destroy_image(game->mlx, game->background_map.img);
+		game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun3.xpm", &game->gun_width, &game->gun_height);
+		game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
+		ft_init_mini_map(game, &game->mini_map);
+		ft_init_background_map(game, &game->background_map);
+		mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, X_IMG, Y_IMG + 20 + 12 * game->len_y);
+		mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		i++;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		mlx_destroy_image(game->mlx, game->gun.img);
+		mlx_destroy_image(game->mlx, game->mini_map.img);
+		mlx_destroy_image(game->mlx, game->background_map.img);
+		game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun4.xpm", &game->gun_width, &game->gun_height);
+		game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
+		ft_init_mini_map(game, &game->mini_map);
+		ft_init_background_map(game, &game->background_map);
+		mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, X_IMG, Y_IMG + 20 + 12 * game->len_y);
+		mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		i++;
+	}
+	mlx_destroy_image(game->mlx, game->gun.img);
+	mlx_destroy_image(game->mlx, game->mini_map.img);
+	mlx_destroy_image(game->mlx, game->background_map.img);
+	game->gun.img = mlx_xpm_file_to_image(game->mlx, "textures/gun1.xpm", &game->gun_width, &game->gun_height);
+	game->gun.addr = mlx_get_data_addr(game->gun.img, &game->gun.bpp, &game->gun.line_length, &game->gun.endian);
+	ft_init_mini_map(game, &game->mini_map);
+	ft_init_background_map(game, &game->background_map);
+	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, X_IMG, Y_IMG + 20 + 12 * game->len_y);
+	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+	ft_putstr_fd("PAN!\n", 2);
+}
+
 int	ft_moves(t_game *game)
 {
 	if (game->W_DOWN)
@@ -136,6 +208,8 @@ int	ft_moves(t_game *game)
 		ft_rotate_left(game);
 	if (game->RIGHT_DOWN)
 		ft_rotate_right(game);
+	if (game->SPACE_DOWN)
+		ft_shot(game);
 	return (0);
 }
 
@@ -153,6 +227,8 @@ int	ft_keypress(int keycode, t_game *game)
 		game->LEFT_DOWN = 1;
 	if (keycode == RIGHT)
 		game->RIGHT_DOWN = 1;
+	if (keycode == SPACE)
+		game->SPACE_DOWN = 1;
 	return (0);
 }
 
@@ -172,5 +248,7 @@ int	ft_keyrelease(int keycode, t_game *game)
 		game->LEFT_DOWN = 0;
 	if (keycode == RIGHT)
 		game->RIGHT_DOWN = 0;
+	if (keycode == SPACE)
+		game->SPACE_DOWN = 0;
 	return (0);
 }
