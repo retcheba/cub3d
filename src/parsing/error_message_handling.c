@@ -76,7 +76,6 @@ void	ft_texture_and_color_errors(int nb_error, t_game *game)
 //MAP ERRORS
 void	ft_map_errors(int nb_error, t_game *game)
 {
-	(void)game;
 	if (nb_error == MAP_ELEM_ERROR)
 		ft_putstr_fd("Error\nMap elements are not correct.\n", 2);
 	if (nb_error == PLAYER_ERROR)
