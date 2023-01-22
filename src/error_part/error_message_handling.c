@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:18 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/20 22:37:25 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:21:50 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ static void	ft_free_scene_and_map(t_game *game)
 {
 	if (game->gun.img)
 		mlx_destroy_image(game->mlx, game->gun.img);
-	if (game->N_texture.img)
-		mlx_destroy_image(game->mlx, game->N_texture.img);
-	if (game->S_texture.img)
-		mlx_destroy_image(game->mlx, game->S_texture.img);
-	if (game->W_texture.img)
-		mlx_destroy_image(game->mlx, game->W_texture.img);
-	if (game->E_texture.img)
-		mlx_destroy_image(game->mlx, game->E_texture.img);
+	if (game->no_texture.img)
+		mlx_destroy_image(game->mlx, game->no_texture.img);
+	if (game->so_texture.img)
+		mlx_destroy_image(game->mlx, game->so_texture.img);
+	if (game->we_texture.img)
+		mlx_destroy_image(game->mlx, game->we_texture.img);
+	if (game->ea_texture.img)
+		mlx_destroy_image(game->mlx, game->ea_texture.img);
 	if (game->mlx)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
-	free(game->path_to_the_north_texture);
-	free(game->path_to_the_south_texture);
-	free(game->path_to_the_west_texture);
-	free(game->path_to_the_east_texture);
+	free(game->no_texture.path);
+	free(game->so_texture.path);
+	free(game->we_texture.path);
+	free(game->ea_texture.path);
 	free(game->floor_color);
 	free(game->ceiling_color);
 	free_tab(game->map);
@@ -76,6 +76,7 @@ void	ft_texture_and_color_errors(int nb_error, t_game *game)
 //MAP ERRORS
 void	ft_map_errors(int nb_error, t_game *game)
 {
+	(void)game;
 	if (nb_error == MAP_ELEM_ERROR)
 		ft_putstr_fd("Error\nMap elements are not correct.\n", 2);
 	if (nb_error == PLAYER_ERROR)

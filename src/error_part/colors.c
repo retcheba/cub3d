@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:05:42 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/20 22:02:33 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:03:10 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,6 @@ static void	check_digits(char **color, t_game *game)
 // check atoi(color) 0-255
 void	check_atoi(char **color, t_game *game)
 {
-	if(!(color || color[0] || color[1] || color[2])
-		|| (ft_strlen(color[2]) == 1))
-	{
-		ft_free_colors(color);
-		ft_texture_and_color_errors(COLOR_ERROR, game);
-	}
 	if (ft_atoi(color[0]) < 0 || ft_atoi(color[0]) > 255
 		|| ft_atoi(color[1]) < 0 || ft_atoi(color[1]) > 255
 		|| ft_atoi(color[2]) < 0 || ft_atoi(color[2]) > 255)

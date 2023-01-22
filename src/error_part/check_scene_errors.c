@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene_errors.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:28:28 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 17:54:27 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:17:30 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ void	check_scene_errors(int argc, char **argv, t_game *game)
 
 void	check_path_and_color(t_game *game)
 {
-	if (game->path_to_the_north_texture == NULL
-		|| game->path_to_the_east_texture == NULL
-		|| game->path_to_the_south_texture == NULL
-		|| game->path_to_the_west_texture == NULL)
+	if (game->no_texture.path == NULL
+		|| game->ea_texture.path == NULL
+		|| game->so_texture.path == NULL
+		|| game->we_texture.path == NULL)
 		ft_texture_and_color_errors(TX_FILE_ERROR, game);
-	if (ft_strlen(game->path_to_the_north_texture) <= 5
-		|| ft_strlen(game->path_to_the_east_texture) <= 5
-		|| ft_strlen(game->path_to_the_south_texture) <= 5
-		|| ft_strlen(game->path_to_the_west_texture) <= 5)
+	if (ft_strlen(game->no_texture.path) <= 5
+		|| ft_strlen(game->ea_texture.path) <= 5
+		|| ft_strlen(game->so_texture.path) <= 5
+		|| ft_strlen(game->we_texture.path) <= 5)
 		ft_texture_and_color_errors(TX_FILE_ERROR, game);
 	/*if (ft_strncmp(game->path_to_the_north_texture
 			+ ft_strlen(game->path_to_the_north_texture) - 5, ".xpm\n", 5) != 0)

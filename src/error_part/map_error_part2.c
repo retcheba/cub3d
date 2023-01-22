@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_error_part2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:39:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 11:56:07 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/22 02:36:51 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,13 @@ static void	check_all_map_elements(t_game *game)
 static void	get_player_angle(t_game *game, int i, int j)
 {
 	if (game->map[i][j] == 'N')
-		game->pa = M_PI / 2;
+		game->player.angle = M_PI / 2;
 	if (game->map[i][j] == 'S')
-		game->pa = (3 * M_PI) / 2;
+		game->player.angle = (3 * M_PI) / 2;
 	if (game->map[i][j] == 'W')
-		game->pa = M_PI;
+		game->player.angle = M_PI;
 	if (game->map[i][j] == 'E')
-		game->pa = 0;
+		game->player.angle = 0;
 }
 
 static void	get_player_pos_and_angle(t_game *game)
@@ -131,8 +131,8 @@ static void	get_player_pos_and_angle(t_game *game)
 			if (game->map[i][j] == 'N' || game->map[i][j] == 'W'
 				|| game->map[i][j] == 'E' || game->map[i][j] == 'S')
 			{
-				game->x = j + 1;
-				game->y = i + 1;
+				game->player.x = j + 1;
+				game->player.y = i + 1;
 				get_player_angle(game, i, j);
 				return ;
 			}

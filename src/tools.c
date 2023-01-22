@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:38:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 20:07:00 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:54:39 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,23 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
-void	ft_free_var_and_exit(t_game *game, char **tab, char *tmp)
+void	ft_free_vars_and_exit(t_game *game, char **tab, char *tmp, int fd)
 {
+	close(fd);
 	free_tab(tab);
 	free(tmp);
-	if (game->path_to_the_north_texture)
-		free (game->path_to_the_north_texture);
-	if (game->path_to_the_south_texture)
-		free (game->path_to_the_south_texture);
-	if (game->path_to_the_west_texture)
-		free (game->path_to_the_west_texture);
-	if (game->path_to_the_east_texture)
-		free (game->path_to_the_east_texture);
+	if (game->no_texture.path)
+		free (game->no_texture.path);
+	if (game->so_texture.path)
+		free (game->so_texture.path);
+	if (game->we_texture.path)
+		free (game->we_texture.path);
+	if (game->ea_texture.path)
+		free (game->ea_texture.path);
 	if (game->floor_color)
 		free (game->floor_color);
 	if (game->ceiling_color)
 		free (game->ceiling_color);
-	ft_putstr_fd("Error\nWrong map\n", 2);
+	ft_putstr_fd("Error\nWrong scene\n", 2);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:52:14 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/20 18:05:03 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/22 03:27:13 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int	get_x_texture(t_game *game, int i)
 	x_ray = 0.0;
 	len = game->cell_size;
 	p_len = 132;
-	if (game->lines_len[i][1] == NORTH || game->lines_len[i][1] == SOUTH)
+	if (game->data_rays[i][1] == NORTH || game->data_rays[i][1] == SOUTH)
 	{
-		x_ray = game->lines_len[i][2] / game->cell_size;
+		x_ray = game->data_rays[i][2] / game->cell_size;
 		x_ray = (x_ray - (int)x_ray) * game->cell_size;
 	}
-	else if (game->lines_len[i][1] == WEST || game->lines_len[i][1] == EAST)
+	else if (game->data_rays[i][1] == WEST || game->data_rays[i][1] == EAST)
 	{
-		x_ray = game->lines_len[i][3] / game->cell_size;
+		x_ray = game->data_rays[i][3] / game->cell_size;
 		x_ray = (x_ray - (int)x_ray) * game->cell_size;
 	}
 	x = p_len * x_ray / len;

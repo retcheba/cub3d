@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mini_map.c                                    :+:      :+:    :+:   */
+/*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:46:49 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/17 16:11:53 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/22 02:46:43 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	ft_draw_player(t_game *game, t_img_data *mini_map)
 		j = 0;
 		while (j < 3)
 		{
-			my_mlx_pixel_put(mini_map, game->px + (i - 1), game->py + (j - 1), 0xFF0000);
+			my_mlx_pixel_put(mini_map, game->player.px + (i - 1), \
+				game->player.py + (j - 1), 0xFF0000);
 			j++;
 		}
 		i++;
@@ -105,14 +106,16 @@ static void	ft_draw_grid(t_img_data *mini_map, int len_y, int len_x, \
 	}
 }
 
-void	ft_init_mini_map(t_game *game, t_img_data *mini_map)
+void	ft_mini_map(t_game *game, t_img_data *mini_map)
 {
-	mini_map->img = mlx_new_image(game->mlx, (game->len_x * game->cell_size), \
-		(game->len_y * game->cell_size));
+	mini_map->img_width = game->len_x * game->cell_size;
+	mini_map->img_height = game->len_y * game->cell_size;
+	mini_map->img = mlx_new_image(game->mlx, mini_map->img_width, \
+		mini_map->img_height);
 	mini_map->addr = mlx_get_data_addr(mini_map->img, &mini_map->bpp, \
 		&mini_map->line_length, &mini_map->endian);
 	ft_draw_squares(game, game->cell_size);
 	ft_draw_grid(mini_map, game->len_y, game->len_x, game->cell_size);
-	ft_draw_lines(game, mini_map);
+	ft_ray_caster(game);
 	ft_draw_player(game, mini_map);
 }
