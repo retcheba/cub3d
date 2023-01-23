@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 13:30:50 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:38:27 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,8 @@ void	ft_put_pixel(t_game *game, t_raycast *raycast);
 void	incr_or_decr_xy(t_game *game, t_raycast *raycast, float x2, float y2);
 //	GET_COLOR_TEXTURE
 int		get_color_texture(t_img_data *data, int x, int y);
-int		get_y_texture(int y1, float len1);
-int		get_x_texture(t_game *game, int i);
+int		get_y_texture(int y1, float len1, int len2);
+int		get_x_texture(t_game *game, int i, int len2);
 int		get_coordinates_texture(int c1, int len1, int len2);
 //	ERROR_PART
 void	check_scene_errors(int argc, char **argv, t_game *game);

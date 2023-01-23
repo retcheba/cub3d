@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:05:45 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 03:26:17 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:51:38 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,25 @@ static int	get_px_color(t_game *game, int x, int y, float len)
 	int		color;
 
 	if (game->data_rays[x][1] == NORTH)
-		color = get_color_texture(&game->no_texture, get_x_texture(game, x), \
-			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len));
+		color = get_color_texture(&game->no_texture, \
+			get_x_texture(game, x, game->no_texture.img_width), \
+			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len, \
+				game->no_texture.img_height));
 	else if (game->data_rays[x][1] == SOUTH)
-		color = get_color_texture(&game->so_texture, get_x_texture(game, x), \
-			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len));
+		color = get_color_texture(&game->so_texture, \
+			get_x_texture(game, x, game->so_texture.img_width), \
+			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len, \
+				game->so_texture.img_height));
 	else if (game->data_rays[x][1] == WEST)
-		color = get_color_texture(&game->we_texture, get_x_texture(game, x), \
-			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len));
+		color = get_color_texture(&game->we_texture, \
+			get_x_texture(game, x, game->we_texture.img_width), \
+			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len, \
+				game->we_texture.img_height));
 	else if (game->data_rays[x][1] == EAST)
-		color = get_color_texture(&game->ea_texture, get_x_texture(game, x), \
-			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len));
+		color = get_color_texture(&game->ea_texture, \
+			get_x_texture(game, x, game->ea_texture.img_width), \
+			get_y_texture((y - (WIN_HEIGHT / 2) + (len / 2)), len, \
+				game->ea_texture.img_height));
 	else
 		color = 0x000000;
 	return (color);
