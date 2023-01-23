@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 01:44:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 22:31:18 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 22:54:47 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ void	ft_draw_mini_map(t_game *game, t_img_data *background_map)
 	int	map_width;
 	int	map_height;
 
-	map_width = 140;
-	map_height = 140;
-	y = -70;
+	map_width = 120;
+	map_height = 120;
+	y = -(map_height / 2);
 	while (y < map_height / 2)
 	{
-		x = -70;
+		x = -(map_width / 2);
 		while (x < map_width / 2)
 		{
 			color = 0x000000;
@@ -72,7 +72,7 @@ void	ft_draw_mini_map(t_game *game, t_img_data *background_map)
 				&& game->player.py + y < game->mini_map.img_height)
 				color = get_color_texture(&game->mini_map, \
 					game->player.px + x, game->player.py + y);
-			my_mlx_pixel_put(background_map, x + 80, y + 80, color);
+			my_mlx_pixel_put(background_map, x + 70, y + 70, color);
 			x++;
 		}
 		y++;

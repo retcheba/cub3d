@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 20:13:02 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 22:47:15 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define ROTATE_SPEED		0.011
 // OTHERS
 # define WIN_WIDTH			900
-# define WIN_HEIGHT			556
+# define WIN_HEIGHT			560
 # define NB_RAYS			450
 # define CUBE_HEIGHT		10000.0
 # define COLLISION			15.0
