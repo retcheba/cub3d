@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:16:59 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:35:54 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void	ft_rotate_left(t_game *game)
 	ft_mini_map(game, &game->mini_map);
 	ft_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, \
-		X_IMG, Y_IMG + 20 + 12 * game->len_y);
-	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		0, 0);
 }
 
 static void	ft_rotate_right(t_game *game)
@@ -44,8 +43,7 @@ static void	ft_rotate_right(t_game *game)
 	ft_mini_map(game, &game->mini_map);
 	ft_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, \
-		X_IMG, Y_IMG + 20 + 12 * game->len_y);
-	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		0, 0);
 }
 
 int	ft_moves(t_game *game)

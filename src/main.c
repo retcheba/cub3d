@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 11:42:50 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:49:57 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_init_vars(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, WIN_WIDTH, WIN_HEIGHT + 20 + 12 * \
-		game.len_y, "cub3d");
+	game.win = mlx_new_window(game.mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	ft_init_textures(&game);
 	ft_mini_map(&game, &game.mini_map);
 	ft_background_map(&game, &game.background_map);
@@ -32,9 +31,7 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, 2, 1, ft_keypress, &game);
 	mlx_hook(game.win, 3, 2, ft_keyrelease, &game);
 	mlx_loop_hook(game.mlx, ft_moves, &game);
-	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, X_IMG, \
-		Y_IMG + 20 + 12 * game.len_y);
-	mlx_put_image_to_window(game.mlx, game.win, game.mini_map.img, 10, 10);
+	mlx_put_image_to_window(game.mlx, game.win, game.background_map.img, 0, 0);
 	mlx_loop(game.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:32:49 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:30:41 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@
 # define WIN_WIDTH			900
 # define WIN_HEIGHT			556
 # define NB_RAYS			450
-# define X_IMG				0
-# define Y_IMG				0
 # define CUBE_HEIGHT		10000.0
 # define COLLISION			15.0
 # define DR					0.0174533
@@ -149,6 +147,7 @@ void	ft_right(t_game *game);
 //	MAP
 void	ft_mini_map(t_game *game, t_img_data *mini_map);
 void	ft_background_map(t_game *game, t_img_data	*background_map);
+void	ft_draw_mini_map(t_game *game, t_img_data *background_map);
 //	RAY_CASTING
 void	ft_ray_caster(t_game *game);
 int		hit_a_wall(t_game *game, float x, float y);

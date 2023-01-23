@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_message_handling.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:18 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/23 11:25:49 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:59:01 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	ft_free_scene_and_map(t_game *game)
 {
-	if (game->gun.img)
-		mlx_destroy_image(game->mlx, game->gun.img);
 	if (game->no_texture.img)
 		mlx_destroy_image(game->mlx, game->no_texture.img);
 	if (game->so_texture.img)

@@ -6,19 +6,11 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:52:14 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 15:48:34 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:12:50 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-int	get_coordinates_texture(int co1, int len1, int len2)
-{
-	int	co2;
-
-	co2 = len2 * co1 / len1;
-	return (co2);
-}
 
 int	get_y_texture(int y1, float len1, int len2)
 {

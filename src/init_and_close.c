@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 23:40:26 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 02:45:48 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:56:21 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_init_game(t_game *game)
 	game->so_texture.img = NULL;
 	game->we_texture.img = NULL;
 	game->ea_texture.img = NULL;
-	game->gun.img = NULL;
 	game->floor_color = NULL;
 	game->ceiling_color = NULL;
 	game->keydown.w = 0;
@@ -37,7 +36,6 @@ void	ft_init_game(t_game *game)
 
 int	ft_close_game(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->gun.img);
 	mlx_destroy_image(game->mlx, game->no_texture.img);
 	mlx_destroy_image(game->mlx, game->so_texture.img);
 	mlx_destroy_image(game->mlx, game->we_texture.img);
@@ -105,5 +103,4 @@ void	ft_init_textures(t_game *game)
 		|| !game->we_texture.img || !game->ea_texture.img)
 		ft_texture_and_color_errors(TX_FILE_ERROR, game);
 	get_data_textures(game);
-	ft_init_gun_texture(game);
 }

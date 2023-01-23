@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:46:54 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 04:11:22 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:57:27 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void	ft_rotate_left(t_game *game)
 	ft_mini_map(game, &game->mini_map);
 	ft_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, \
-		X_IMG, Y_IMG + 20 + 12 * game->len_y);
-	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		0, 0);
 }
 
 static void	ft_rotate_right(t_game *game)
@@ -44,8 +43,7 @@ static void	ft_rotate_right(t_game *game)
 	ft_mini_map(game, &game->mini_map);
 	ft_background_map(game, &game->background_map);
 	mlx_put_image_to_window(game->mlx, game->win, game->background_map.img, \
-		X_IMG, Y_IMG + 20 + 12 * game->len_y);
-	mlx_put_image_to_window(game->mlx, game->win, game->mini_map.img, 10, 10);
+		0, 0);
 }
 
 int	ft_moves(t_game *game)
@@ -62,8 +60,6 @@ int	ft_moves(t_game *game)
 		ft_rotate_left(game);
 	if (game->keydown.right)
 		ft_rotate_right(game);
-	if (game->keydown.space)
-		ft_shot(game);
 	return (0);
 }
 
@@ -81,8 +77,6 @@ int	ft_keypress(int keycode, t_game *game)
 		game->keydown.left = 1;
 	if (keycode == RIGHT)
 		game->keydown.right = 1;
-	if (keycode == SPACE)
-		game->keydown.space = 1;
 	return (0);
 }
 
@@ -102,7 +96,5 @@ int	ft_keyrelease(int keycode, t_game *game)
 		game->keydown.left = 0;
 	if (keycode == RIGHT)
 		game->keydown.right = 0;
-	if (keycode == SPACE)
-		game->keydown.space = 0;
 	return (0);
 }

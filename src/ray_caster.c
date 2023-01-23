@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 03:52:06 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:08:01 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	ft_draw_one_ray(t_game *game, t_raycast *raycast, \
 	{
 		raycast->ox = raycast->x;
 		raycast->oy = raycast->y;
-		ft_put_pixel(game, raycast);
 		incr_or_decr_xy(game, raycast, x2, y2);
 	}
 }

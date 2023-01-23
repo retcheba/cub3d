@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:24:56 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:13:02 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 # define D 					100
 # define LEFT				65361
 # define RIGHT				65363
-# define SPACE				32
 // FACES
 # define NORTH				10
 # define SOUTH				11
@@ -49,8 +48,6 @@
 # define WIN_WIDTH			900
 # define WIN_HEIGHT			556
 # define NB_RAYS			450
-# define X_IMG				0
-# define Y_IMG				0
 # define CUBE_HEIGHT		10000.0
 # define COLLISION			15.0
 # define DR					0.0174533
@@ -125,7 +122,6 @@ typedef struct s_game
 	t_img_data	so_texture;
 	t_img_data	we_texture;
 	t_img_data	ea_texture;
-	t_img_data	gun;
 }	t_game;
 
 //	INIT AND CLOSE
@@ -152,13 +148,11 @@ void	ft_background_map(t_game *game, t_img_data	*background_map);
 //	RAY_CASTING
 void	ft_ray_caster(t_game *game);
 int		hit_a_wall(t_game *game, float x, float y);
-void	ft_put_pixel(t_game *game, t_raycast *raycast);
 void	incr_or_decr_xy(t_game *game, t_raycast *raycast, float x2, float y2);
 //	GET_COLOR_TEXTURE
 int		get_color_texture(t_img_data *data, int x, int y);
 int		get_y_texture(int y1, float len1, int len2);
 int		get_x_texture(t_game *game, int i, int len2);
-int		get_coordinates_texture(int c1, int len1, int len2);
 //	ERROR_PART
 void	check_scene_errors(int argc, char **argv, t_game *game);
 int		ft_nb_lines(t_game *game);
@@ -180,9 +174,5 @@ void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);
 int		ft_strstr(char *str, char *to_find);
 void	free_tab(char **tab);
 void	ft_free_vars_and_exit(t_game *game, char **tab, char *tmp, int fd);
-//	GUN
-void	ft_init_gun_texture(t_game *game);
-void	ft_draw_gun(t_game *game, t_img_data *background_map);
-void	ft_shot(t_game *game);
 
 #endif

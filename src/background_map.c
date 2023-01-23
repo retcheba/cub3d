@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:05:45 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 15:51:38 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:58:23 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,4 @@ void	ft_background_map(t_game *game, t_img_data	*background_map)
 		&background_map->endian);
 	ft_draw_background_color(game, background_map);
 	ft_draw_walls(game, background_map);
-	ft_draw_gun(game, background_map);
 }
