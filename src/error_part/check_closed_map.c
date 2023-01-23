@@ -6,25 +6,11 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:27:24 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/20 19:39:32 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:34:14 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-static void	check_surrounded(char **map, unsigned int i, unsigned int j,
-	t_game *game)
-{
-	if (j == 0 || i == 0 || j >= ft_strlen(map[i]) - 2)
-		ft_map_errors(MAP_ELEM_ERROR, game);
-	if (ft_strchr("0NWES1", map[i - 1][j]) == NULL
-		|| ft_strchr("0NWES1", map[i + 1][j]) == NULL
-		|| ft_strchr("0NWES1", map[i][j - 1]) == NULL
-		|| ft_strchr("0NWES1", map[i][j + 1]) == NULL)
-		ft_map_errors(MAP_ELEM_ERROR, game);
-	else
-		return ;
-}
 
 static void	check_first_line(char *line, t_game *game)
 {
@@ -41,17 +27,6 @@ static void	check_first_line(char *line, t_game *game)
 	}
 }
 
-static void	check_first_car_of_line(char *line, t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] == ' ')
-		i++;
-	if (line[i] != '1')
-		ft_map_errors(MAP_ELEM_ERROR, game);
-}
-
 static void	check_last_car_of_line(char *line, t_game *game)
 {
 	int	i;
@@ -61,6 +36,18 @@ static void	check_last_car_of_line(char *line, t_game *game)
 		i--;
 	if (line[i - 1] != '1')
 		ft_map_errors(MAP_ELEM_ERROR, game);
+}
+
+static void	check_first_car_of_line(char *line, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i] != '1')
+		ft_map_errors(MAP_ELEM_ERROR, game);
+	check_last_car_of_line(line, game);
 }
 
 static void	check_last_line(char *line, t_game *game)
@@ -89,7 +76,6 @@ void	check_closed_map(char **map, t_game *game)
 	{
 		j = 0;
 		check_first_car_of_line(map[i], game);
-		check_last_car_of_line(map[i], game);
 		while (map[i][j])
 		{
 			while (map[i][j] != '0' && map[i][j] != 'N' && map[i][j] != 'W'

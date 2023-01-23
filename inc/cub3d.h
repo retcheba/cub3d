@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 11:49:50 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:30:50 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,8 @@ int		ft_nb_lines(t_game *game);
 int		check_map_errors(t_game *game);
 void	ft_scene_file_error(int nb_error);
 void	ft_map_errors(int nb_error, t_game *game);
+void	check_surrounded(char **map, unsigned int i, unsigned int j,
+			t_game *game);
 void	check_closed_map(char **map, t_game *game);
 void	ft_texture_and_color_errors(int nb_error, t_game *game);
 void	check_path_and_color(t_game *game);
