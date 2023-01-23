@@ -1,17 +1,14 @@
 NO textures/N_wall.xpm
 SO textures/S_wall.xpm
 WE textures/W_wall.xpm
-EA textures/E_wall.xpm
+EA textures/E_xpm.wall
 
 F 0,0,0
 C 22,30,8
 
  1111111
 11000101
-1000011
-111111111
-
-11111111
+ 11000011
 11000011
 100E0001
 10111001

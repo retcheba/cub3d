@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 08:49:38 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/23 11:27:39 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:31:37 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static void	check_floor_color_commas(t_game *game)
 		i++;
 	}
 	if (nb_commas != 2)
-	{
-		printf("erreur comma floor\n");
 		ft_texture_and_color_errors(COLOR_ERROR, game);
-	}
 }
 
 // check if only 2 commas in the ceiling color
@@ -48,10 +45,7 @@ static void	check_ceiling_color_commas(t_game *game)
 		i++;
 	}
 	if (nb_commas != 2)
-	{
-		printf("erreur comma ceiling\n");
 		ft_texture_and_color_errors(COLOR_ERROR, game);
-	}
 }
 
 //check length minimum and maximum length of texture path
