@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 04:47:07 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:49:50 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int		get_coordinates_texture(int c1, int len1, int len2);
 //	ERROR_PART
 void	check_scene_errors(int argc, char **argv, t_game *game);
 int		ft_nb_lines(t_game *game);
-int		map_error_part2(t_game *game);
+int		check_map_errors(t_game *game);
 void	ft_scene_file_error(int nb_error);
 void	ft_map_errors(int nb_error, t_game *game);
 void	check_closed_map(char **map, t_game *game);
@@ -170,9 +170,10 @@ void	ft_texture_and_color_errors(int nb_error, t_game *game);
 void	check_path_and_color(t_game *game);
 void	get_textures(t_game *game);
 void	check_color_errors(t_game *game);
-void	get_colors(t_game *game);
 void	get_floor_color(t_game *game);
 void	get_ceiling_color(t_game *game);
+void	get_map_size(t_game *game);
+void	get_player_pos_and_angle(t_game *game);
 //	TOOLS
 char	*remove_back_to_ligne(char *str);
 void	my_mlx_pixel_put(t_img_data	*data, int x, int y, int color);

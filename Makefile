@@ -3,8 +3,9 @@ OBJ_DIR		= obj
 SRCS		= main.c init_and_close.c mini_map.c ray_caster.c ray_caster_utils.c \
 				background_map.c get_color_texture.c keypress1.c keypress2.c tools.c gun.c \
 				parsing.c parsing_utils.c error_part/check_scene_errors.c \
-				error_part/map_error_part2.c error_part/error_message_handling.c \
-				error_part/check_color_errors.c error_part/colors.c error_part/check_closed_map.c 
+				error_part/check_map_errors.c error_part/error_message_handling.c \
+				error_part/check_color_errors.c error_part/colors.c \
+				error_part/check_closed_map.c error_part/get_map_elements.c
 
 SRC			= $(addprefix src/, $(SRCS))
 OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

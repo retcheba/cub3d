@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 01:14:28 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:42:50 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	ft_init_game(&game);
 	check_scene_errors(argc, argv, &game);
 	ft_parsing(&game);
-	if (map_error_part2(&game))
+	if (check_map_errors(&game))
 		return (1);
 	ft_init_vars(&game);
 	game.mlx = mlx_init();

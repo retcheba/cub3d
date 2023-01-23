@@ -6,7 +6,7 @@
 /*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 08:49:38 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/17 17:02:40 by subrandt         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:27:39 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,27 @@ static void	check_ceiling_color_commas(t_game *game)
 	}
 }
 
-void	get_colors(t_game *game)
+//check length minimum and maximum length of texture path
+void	check_path_and_color(t_game *game)
 {
+	if (game->no_texture.path == NULL
+		|| game->ea_texture.path == NULL
+		|| game->so_texture.path == NULL
+		|| game->we_texture.path == NULL)
+		ft_texture_and_color_errors(TX_FILE_ERROR, game);
+	if (ft_strlen(game->no_texture.path) <= 5
+		|| ft_strlen(game->ea_texture.path) <= 5
+		|| ft_strlen(game->so_texture.path) <= 5
+		|| ft_strlen(game->we_texture.path) <= 5)
+		ft_texture_and_color_errors(TX_FILE_ERROR, game);
+	if (game->ceiling_color == NULL || game->floor_color == NULL)
+		ft_texture_and_color_errors(COLOR_ERROR, game);
+	if (ft_strlen(game->ceiling_color) <= 5
+		|| ft_strlen(game->floor_color) <= 5)
+		ft_texture_and_color_errors(COLOR_ERROR, game);
+	if (ft_strlen(game->ceiling_color) >= 13
+		|| ft_strlen(game->floor_color) >= 13)
+		ft_texture_and_color_errors(COLOR_ERROR, game);
 	check_floor_color_commas(game);
 	check_ceiling_color_commas(game);
 	get_floor_color(game);
