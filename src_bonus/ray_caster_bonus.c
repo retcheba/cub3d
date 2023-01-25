@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:56:02 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:17:34 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:23:11 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ static float	get_data_rays(t_game *game, t_raycast *raycast, int i)
 	game->data_rays[i][1] = 0;
 	if (((int)raycast->oy - game->cell_size) / game->cell_size \
 		== (int)raycast->y / game->cell_size)
-		game->data_rays[i][1] = NORTH;
+		game->data_rays[i][1] = SOUTH;
 	if (((int)raycast->oy + game->cell_size) / game->cell_size \
 		== (int)raycast->y / game->cell_size)
-		game->data_rays[i][1] = SOUTH;
+		game->data_rays[i][1] = NORTH;
 	if (((int)raycast->ox - game->cell_size) / game->cell_size \
 		== (int)raycast->x / game->cell_size)
-		game->data_rays[i][1] = WEST;
+		game->data_rays[i][1] = EAST;
 	if (((int)raycast->ox + game->cell_size) / game->cell_size \
 		== (int)raycast->x / game->cell_size)
-		game->data_rays[i][1] = EAST;
+		game->data_rays[i][1] = WEST;
 	dist = sqrt((game->player.px - raycast->x) * (game->player.px - raycast->x) \
 		+ (game->player.py - raycast->y) * (game->player.py - raycast->y));
 	return (dist);

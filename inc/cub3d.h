@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 22:47:15 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:27:52 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../libft/inc/libft.h"
 # include <fcntl.h>
 # include <math.h>
-# include <stdio.h>
 
 // ERROR_CODES
 # define ARG_ERROR			1
