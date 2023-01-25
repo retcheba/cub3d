@@ -41,10 +41,7 @@ static void	ft_free_scene_and_map(t_game *game)
 void	ft_scene_file_error(int nb_error)
 {
 	if (nb_error == ARG_ERROR)
-	{
 		ft_putstr_fd("Error\nWrong number of arguments\n", 2);
-		ft_putstr_fd("Enter the scene file name!\n", 2);
-	}
 	if (nb_error == FILE_NAME_ERROR)
 		ft_putstr_fd("Error\nEnter a *.cub file!\n", 2);
 	if (nb_error == FD_ERROR)

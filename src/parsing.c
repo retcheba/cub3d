@@ -6,11 +6,33 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:38 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/22 04:38:28 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:48:05 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static void	check_nb_arguments(t_game *game, int fd, char **tab, char *tmp)
+{
+	if (tab[1] == NULL || ft_strstr(tab[1], "\n"))
+		ft_free_vars_and_exit(game, tab, tmp, fd);
+	if (tab[2] != NULL)
+	{
+		if (!ft_strstr(tab[2], "\n"))
+			ft_free_vars_and_exit(game, tab, tmp, fd);
+	}
+}
+
+static void	check_tmp(t_game *game, int fd, char **tab, char *tmp)
+{
+	if (!tmp)
+		ft_free_vars_and_exit(game, tab, tmp, fd);
+	else
+	{
+		free(tmp);
+		tmp = NULL;
+	}
+}
 
 static int	get_texture_and_color(t_game *game, int fd)
 {
@@ -19,23 +41,23 @@ static int	get_texture_and_color(t_game *game, int fd)
 	char	*tmp;
 	char	**tab;
 
+	tmp = NULL;
+	tab = NULL;
 	index = 0;
 	count = 0;
 	while (index < 6)
 	{
 		tmp = get_next_line(fd);
-		if (!(ft_strstr(tmp, "\n")))
+		if (!(ft_strstr(tmp, "\n")) && tmp)
 		{
 			tab = ft_split(tmp, ' ');
-			if (tab[1] == NULL || ft_strstr(tab[1], "\n"))
-				ft_free_vars_and_exit(game, tab, tmp, fd);
-			if (tab[2] != NULL)
-				ft_free_vars_and_exit(game, tab, tmp, fd);
+			check_nb_arguments(game, fd, tab, tmp);
 			if (get_path_and_color_name(game, tab))
 				index++;
 			free_tab(tab);
+			tab = NULL;
 		}
-		free(tmp);
+		check_tmp(game, fd, tab, tmp);
 		count++;
 	}
 	return (count);

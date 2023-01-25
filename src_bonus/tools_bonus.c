@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:38:51 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:17:47 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:54:42 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ void	free_tab(char **tab)
 void	ft_free_vars_and_exit(t_game *game, char **tab, char *tmp, int fd)
 {
 	close(fd);
-	free_tab(tab);
-	free(tmp);
+	if (tab)
+		free_tab(tab);
+	if (tmp)
+		free(tmp);
 	if (game->no_texture.path)
 		free (game->no_texture.path);
 	if (game->so_texture.path)
