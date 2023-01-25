@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_closed_map_bonus.c                           :+:      :+:    :+:   */
+/*   check_closed_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: subrandt <subrandt@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:27:24 by subrandt          #+#    #+#             */
-/*   Updated: 2023/01/23 19:17:59 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:09:26 by subrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	check_first_line(char *line, t_game *game)
 	{
 		if (line[i] == '0')
 			ft_map_errors(MAP_ELEM_ERROR, game);
-		i++;
+		if (line[i] == ' ' || line[i] == '1')
+			i++;
 		if (line[i] == '\0' || line[i] == '\n')
 			break ;
 	}
@@ -71,6 +72,7 @@ void	check_closed_map(char **map, t_game *game)
 	int	j;
 
 	check_first_line(map[0], game);
+	check_last_line(map[ft_nb_lines(game) - 1], game);
 	i = 1;
 	while (map[i])
 	{
@@ -88,8 +90,6 @@ void	check_closed_map(char **map, t_game *game)
 				j++;
 			}
 		}
-		if (i == ft_nb_lines(game) - 1)
-			check_last_line(map[ft_nb_lines(game) - 1], game);
 		i++;
 	}
 }
