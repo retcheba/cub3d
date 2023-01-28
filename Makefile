@@ -6,7 +6,7 @@ SRCS		= main.c init_and_close.c mini_map.c ray_caster.c ray_caster_utils.c \
 				error_part/check_map_errors.c error_part/error_message_handling.c \
 				error_part/check_color_errors.c error_part/colors.c \
 				error_part/check_closed_map.c error_part/get_map_elements.c \
-				error_part/check_surrounded.c
+				error_part/check_surrounded.c error_part/error_display.c
 SRC			= $(addprefix src/, $(SRCS))
 OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS		= mkdir -p $(@D)
@@ -20,7 +20,7 @@ SRCS_BONUS		= main_bonus.c init_and_close_bonus.c mini_map_bonus.c ray_caster_bo
 					error_part/check_map_errors_bonus.c error_part/error_message_handling_bonus.c \
 					error_part/check_color_errors_bonus.c error_part/colors_bonus.c \
 					error_part/check_closed_map_bonus.c error_part/get_map_elements_bonus.c \
-					error_part/check_surrounded_bonus.c
+					error_part/check_surrounded_bonus.c error_part/error_display_bonus.c
 SRC_BONUS		= $(addprefix src_bonus/, $(SRCS_BONUS))
 OBJS_BONUS		= $(SRC_BONUS:$(SRC_BONUS_DIR)/%.c=$(OBJ_BONUS_DIR)/%.o)
 D_OBJS_BONUS	= mkdir -p $(@D)

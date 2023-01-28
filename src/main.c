@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:00:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:49:57 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:15:27 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_init_vars(&game);
 	game.mlx = mlx_init();
+	if (!game.mlx)
+		ft_error_display(&game);
 	game.win = mlx_new_window(game.mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	ft_init_textures(&game);
 	ft_mini_map(&game, &game.mini_map);
