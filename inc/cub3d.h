@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:34:00 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/28 18:58:22 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:00:38 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 # define EAST				12
 # define WEST				13
 // SPEEDS
-# define SPEED				0.25
-# define ROTATE_SPEED		0.011
+# define SPEED				0.275
+# define ROTATE_SPEED		0.0135
 // OTHERS
 # define WIN_WIDTH			900
 # define WIN_HEIGHT			560

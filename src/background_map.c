@@ -6,7 +6,7 @@
 /*   By: retcheba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:05:45 by retcheba          #+#    #+#             */
-/*   Updated: 2023/01/23 19:58:23 by retcheba         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:52:30 by retcheba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ static void	ft_draw_background_color(t_game *game, t_img_data *background_map)
 		}
 		i++;
 	}
-}
-
-static void	draw_wall_slice(t_img_data *background_map, int x, int y, int color)
-{
-	if (y >= 0 && y < WIN_HEIGHT)
-		my_mlx_pixel_put(background_map, x, y, color);
 }
 
 static int	get_px_color(t_game *game, int x, int y, float len)
@@ -84,8 +78,11 @@ static void	ft_draw_walls(t_game *game, t_img_data *background_map)
 		y = (WIN_HEIGHT / 2) - (len / 2);
 		while (y < ((WIN_HEIGHT / 2) + (len / 2)))
 		{
-			color = get_px_color(game, x, y, len);
-			draw_wall_slice(background_map, WIN_WIDTH - i, y, color);
+			if (y >= 0 && y < WIN_HEIGHT)
+			{
+				color = get_px_color(game, x, y, len);
+				my_mlx_pixel_put(background_map, WIN_WIDTH - i, y, color);
+			}
 			y++;
 		}
 		i++;
