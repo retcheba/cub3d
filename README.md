@@ -15,14 +15,21 @@ make && ./cub3D map/...
 make bonus && ./cub3D map/...
   ```
 
+### Commandes :
+
+- WASD pour se déplacer
+- La flèche de droite et la flèche de gauche pour pivoter
+- ESC ou la croix pour quiter
+
 # Qu'est ce que Cub3d ?
-### Le sujet
+### Description
 Ce projet est inspiré du jeu Wolfenstein 3D. Mondialement connu, Wolfenstein 3D est considéré comme le premier FPS (c'est à dire un jeu de tir à la première personne) jamais développé. 
 
+### Le sujet
 - L'objectif est de faire une vue dynamique (qui s'adapte au cours du temps selon les mouvements du joueur)
 - et subjective (on voit du point de vue des yeux du personnage)
 - au sein d’un labyrinthe ayant une représentation graphique 3D "réalistique", dans lequel on doit trouver son chemin. 
 
-Ce projet permet d'explorer la technique du ray-casting. (Le lancer de rayons est une technique de rendu capable de créer une perspective tridimensionnelle à partir d'une carte bidimensionnelle).
+Ce projet permet d'explorer la technique du ray-casting. Le ray-casting (le lancer de rayons) est une technique de rendu capable de créer une perspective tridimensionnelle à partir d'une carte bidimensionnelle.
 
 
