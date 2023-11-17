@@ -1,6 +1,6 @@
 # cub3d
 
-https://github.com/retcheba/cub3d/assets/95086567/d053b55a-a252-458b-86ec-b2eb8ee0808d
+![Cover](https://github.com/retcheba/cub3d/blob/cef3ae483d75743d147c98692c8867ff023bba1b/cub3d.png)
 
 Ce projet est executable uniquement sous Linux.
 
