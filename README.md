@@ -15,8 +15,7 @@ make && ./cub3D map/...
 make bonus && ./cub3D map/...
   ```
 
-# Qu'est ce que Cub3d ?
-### Le sujet
+## Qu'est ce que Cub3d ?
 Ce projet est inspiré du jeu Wolfenstein 3D. Mondialement connu, Wolfenstein 3D est considéré comme le premier FPS (c'est à dire un jeu de tir à la première personne) jamais développé. 
 
 - L'objectif est de faire une vue dynamique (qui s'adapte au cours du temps selon les mouvements du joueur)
