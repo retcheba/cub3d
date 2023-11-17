@@ -14,9 +14,6 @@
 
 int	get_path_and_color_name(t_game *game, char **tab)
 {
-	char	*tmp;
-
-	tmp = NULL;
 	if (ft_strstr(tab[0], "NO"))
 		game->no_texture.path = remove_back_to_ligne(tab[1]);
 	else if (ft_strstr(tab[0], "SO"))

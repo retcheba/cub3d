@@ -50,7 +50,7 @@ $(MLX):
 			@make -s -C mlx_linux/
 
 $(NAME): 	$(OBJS) $(LIBFT) $(MLX)
-			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -o $(NAME)
 			@echo "\033[1;92m\nmake completed\n\033[0m"
 
 clean:
@@ -70,7 +70,7 @@ re:			fclean all
 
 bonus:		$(OBJS_BONUS) $(LIBFT) $(MLX)
 			@$(RM) $(NAME)
-			@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -o $(NAME)
 			@echo "\033[1;92m\nmake bonus completed\n\033[0m"
 
 .PHONY:		all clean fclean re bonus
